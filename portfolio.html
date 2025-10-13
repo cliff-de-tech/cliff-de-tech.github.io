@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="CSS/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <title>Projects | Cliff-De-Tech</title>
+  <meta name="description" content="Cliff-De-Tech" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="bg-overlay-gradient" aria-hidden="true"></div>
+
+  <nav class="nav">
+    <a class="brand" href="home.html" aria-label="Home">
+      <img src="assets/logo.png" alt="Logo placeholder" />
+      <span>Cliff-De-Tech</span>
+    </a>
+    <ul>
+      <li><a href="home.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="portfolio.html" class="nav-link active">Projects</a></li>
+      <li><a href="skills.html" class="nav-link">Skills</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <i class='bx bxs-moon'></i>
+    </button>
+    <button class="menu-btn" aria-label="Open menu">&#9776;</button>
+  </nav>
+
+  <section id="portfolio">
+    <h2 class="section-title reveal">My Projects</h2>
+    <p class="section-desc reveal">Select a category to see the related projects.</p>
+
+    <div class="portfolio-categories">
+        <div class="portfolio-category-card reveal" data-category="graphic">
+            <div class="category-text">
+                <h3>Graphic Design</h3>
+                <p>A collection of branding, print, and digital design projects showcasing a strong eye for visual communication.</p>
+            </div>
+            <div class="category-image">
+                <img src="assets/pd.jpg" alt="Graphic Design Preview">
+            </div>
+        </div>
+        <div class="portfolio-category-card reveal" data-category="uiux">
+            <div class="category-text">
+                <h3>UI/UX Design</h3>
+                <p>User-centric designs for mobile and web applications, focusing on intuitive interfaces and seamless user experiences.</p>
+            </div>
+            <div class="category-image">
+                <img src="assets/web ui.jpg" alt="UI/UX Design Preview">
+            </div>
+        </div>
+        <div class="portfolio-category-card reveal" data-category="web">
+            <div class="category-text">
+                <h3>Web Design</h3>
+                <p>Creative and functional web mockups and user interfaces, bringing digital concepts to life with a clean aesthetic.</p>
+            </div>
+             <div class="category-image">
+                <img src="assets/home page.png" alt="Web Design Preview">
+            </div>
+        </div>
+    </div>
+    <div class="project-grid-wrapper" id="projectGridWrapper" style="display: none;">
+        <button class="button" id="backToCategoriesBtn" style="margin-bottom: 32px;">&larr; Back to Categories</button>
+        <div class="portfolio-grid" id="portfolioGrid">
+            <div class="portfolio-item tile reveal" data-category="graphic" data-type="image" data-src="assets/olive-packaging 2.jpg" data-title="olive-packaging">
+              <figure class="portfolio-figure">
+                <img src="assets/olive-packaging.jpg" alt="Project 1" />
+                <div class="overlay"><span class="view-project-text">View Project</span></div>
+              </figure>
+              <div class="portfolio-meta"><span class="portfolio-title">Olive</span><span class="portfolio-badge">Brand</span></div>
+            </div>
+            <div class="portfolio-item tile reveal" data-category="graphic" data-type="image" data-src="assets/magazine 2.jpg" data-title="magazine">
+              <figure class="portfolio-figure">
+                <img src="assets/magazine.jpg" alt="Project 2" />
+                <div class="overlay"><span class="view-project-text">View Project</span></div>
+              </figure>
+              <div class="portfolio-meta"><span class="portfolio-title">Magazine</span><span class="portfolio-badge">Print</span></div>
+            </div>
+            <div class="portfolio-item tile reveal" data-category="graphic" data-type="image" data-src="assets/bi 2.jpg" data-title="Logo">
+              <figure class="portfolio-figure">
+                <img src="assets/bi.jpg" alt="Project 3" />
+                <div class="overlay"><span class="view-project-text">View Project</span></div>
+              </figure>
+              <div class="portfolio-meta"><span class="portfolio-title">Brands Logo</span><span class="portfolio-badge">Logo</span></div>
+            </div>
+            <div class="portfolio-item tile reveal" data-category="uiux" data-type="image" data-src="assets/ios mockup 2.jpg" data-title="Mobile App">
+              <figure class="portfolio-figure">
+                <img src="assets/ios mockup.jpg" alt="Project 4" />
+                <div class="overlay"><span class="view-project-text">View Project</span></div>
+              </figure>
+              <div class="portfolio-meta"><span class="portfolio-title">Mobile App</span><span class="portfolio-badge">UI/UX</span></div>
+            </div>
+            <div class="portfolio-item tile reveal" data-category="graphic" data-type="image" data-src="assets/nextGen logo 2.jpg" data-title="Logo">
+              <figure class="portfolio-figure">
+                <img src="assets/nextGen logo.jpg" alt="Project 5" />
+                <div class="overlay"><span class="view-project-text">View Project</span></div>
+              </figure>
+              <div class="portfolio-meta"><span class="portfolio-title">Brand Logo 2</span><span class="portfolio-badge">Logo</span></div>
+            </div>
+            <div class="portfolio-item tile reveal" data-category="graphic" data-type="image" data-src="assets/Atlas 2.jpg" data-title="Brand Package">
+              <figure class="portfolio-figure">
+                <img src="assets/Atlas.jpg" alt="Project 6" />
+                <div class="overlay"><span class="view-project-text">View Project</span></div>
+              </figure>
+              <div class="portfolio-meta"><span class="portfolio-title">Brand Package</span><span class="portfolio-badge">Packaging</span></div>
+            </div>
+            <div class="portfolio-item tile reveal" data-category="graphic" data-type="image" data-src="assets/pd 2.jpg" data-title="Product">
+              <figure class="portfolio-figure">
+                <img src="assets/pd.jpg" alt="Project 7" />
+                <div class="overlay"><span class="view-project-text">View Project</span></div>
+              </figure>
+              <div class="portfolio-meta"><span class="portfolio-title">Product Design</span><span class="portfolio-badge">Design</span></div>
+            </div>
+            <div class="portfolio-item tile reveal" data-category="web" data-type="image" data-src="assets/home page 2.jpg" data-title="Home page design">
+              <figure class="portfolio-figure">
+                <img src="assets/home page.png" alt="Project 8" />
+                <div class="overlay"><span class="view-project-text">View Project</span></div>
+              </figure>
+              <div class="portfolio-meta"><span class="portfolio-title">Landing pages</span><span class="portfolio-badge">Web Design</span></div>
+            </div>
+            <div class="portfolio-item tile reveal" data-category="uiux" data-type="image" data-src="assets/web ui 2.png" data-title="UI/UX Design">
+              <figure class="portfolio-figure">
+                <img src="assets/web ui.jpg" alt="Project 9" />
+                <div class="overlay"><span class="view-project-text">View Project</span></div>
+              </figure>
+              <div class="portfolio-meta"><span class="portfolio-title">Web UI</span><span class="portfolio-badge">UI/UX</span></div>
+            </div>
+            <div class="portfolio-item tile reveal" data-category="graphic" data-type="image" data-src="assets/CDTS 2.jpg" data-title="Flyer">
+              <figure class="portfolio-figure">
+                <img src="assets/CDTS.jpg" alt="Project 10" />
+                <div class="overlay"><span class="view-project-text">View Project</span></div>
+              </figure>
+              <div class="portfolio-meta"><span class="portfolio-title">Flyer Design</span><span class="portfolio-badge">Design</span></div>
+            </div>
+            <div class="portfolio-item tile reveal" data-category="graphic" data-type="video" data-src="assets/KSec.mp4" data-title="Business Card">
+              <figure class="portfolio-figure">
+                <img src="assets/K1.png" alt="Project 11" />
+                <div class="overlay"><span class="view-project-text">View Project</span></div>
+              </figure>
+              <div class="portfolio-meta"><span class="portfolio-title">Business Card</span><span class="portfolio-badge">Design</span></div>
+            </div>
+            <div class="portfolio-item tile reveal" data-category="graphic" data-type="image" data-src="assets/zest 2.jpg" data-title="Brand Package">
+              <figure class="portfolio-figure">
+                <img src="assets/zest.jpg" alt="Project 12" />
+                <div class="overlay"><span class="view-project-text">View Project</span></div>
+              </figure>
+              <div class="portfolio-meta"><span class="portfolio-title">Brand Package</span><span class="portfolio-badge">Packaging</span></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Media preview">
+  <div class="lightbox-content">
+    <div class="lightbox-media" id="lightboxMedia"></div>
+    <div class="ctrls">
+      <button class="icon-btn" id="prevBtn" aria-label="Previous">⟨ Prev</button>
+      <div style="opacity:.8" id="lightboxTitle">Title</div>
+      <button class="icon-btn" id="nextBtn" aria-label="Next">Next ⟩</button>
+    </div>
+    <button class="icon-btn" id="closeLb" aria-label="Close">✕ Close</button>
+  </div>
+</div>
+  <footer>
+    © <span id="year"></span> Cliff-De-Tech — All Rights Reserved.
+  </footer>
+<script src="JS/main.js"></script>
+</body>
+</html>

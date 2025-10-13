@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ...copy your <head> content here... -->
+    <!-- Link to your CSS file -->
+<link rel="stylesheet" href="CSS/style.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+<link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+<!-- ...existing code... -->
+<link rel="icon" type="image/png" href="assets/logo.png">
+<!-- ...existing code... -->
+<title>Contact | Cliff-De-Tech</title>
+<meta name="description" content="Cliff-De-Tech" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="bg-overlay-gradient" aria-hidden="true"></div>
+  <!-- ...existing code... -->
+</head>
+<body>
+  <!-- ...background and nav... -->
+  <nav class="nav">
+    <a class="brand" href="home.html" aria-label="Home">
+      <img src="assets/logo.png" alt="Logo placeholder" />
+      <span>Cliff-De-Tech</span>
+    </a>
+    <ul>
+      <li><a href="home.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="portfolio.html" class="nav-link">Projects</a></li>
+      <li><a href="skills.html" class.nav-link">Skills</a></li>
+      <li><a href="contact.html" class="nav-link active">Contact Me</a></li>
+    </ul>
+  
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <i class='bx bxs-moon'></i>
+      </button>
+    </div>
+    <button class="menu-btn" aria-label="Open menu">&#9776;</button>
+  </nav>
+  <!-- ====== CONTACT ====== -->
+  <section id="contact">
+  <div class="card reveal" style="max-width:500px; margin-bottom:28px; background:var(--glass); border:1px solid rgba(255,255,255,.12); box-shadow:var(--shadow); border-radius:var(--radius); padding:22px;">
+  <h3 style="margin-bottom:10px; font-family:'Space Grotesk'; font-size:22px;">Contact Details</h3>
+  <ul style="color:var(--muted); font-size:16px; line-height:1.7;">
+  <a href="mailto:cliffdesignz@gmail.com" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">
+    <i class='bxl bx-gmail' style="font-size: 2em;"></i>
+  </a>
+  <a href="tel:+233547092289" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">
+    <i class='bx bx-phone-incoming' style="font-size: 2em;"></i>
+  </a>
+  <a href="http://wa.me/+233207096991" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">
+    <i class='bxl  bx-whatsapp' style="font-size: 2em;"></i> 
+  </a>
+  <a href="https://web.facebook.com/profile.php?id=100093978184338" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">
+    <i class='bxl  bx-facebook' style="font-size: 2em;"></i> 
+  </a>
+              <li><strong>🚩</strong> Accra, Greater Accra, Ghana</li>
+       </ul>
+</div>
+  <h2 style="text-align:center; margin:0 auto;" class="section-title reveal">Let’s Create</h2><br>
+  <p class="section-desc reveal">Tell me about your project. I’ll get back to you within 1–2 business days.</p>
+
+  <form class="form reveal" id="contactForm" action="https://formspree.io/f/xdkldvbn" method="post">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
+      <input class="input" type="text" name="name" placeholder="Your Name" required />
+      <input class="input" type="email" name="email" placeholder="Email" required />
+    </div>
+    <input class="input" type="text" name="subject" placeholder="Project Subject" />
+    <textarea name="message" placeholder="Tell me a bit about your goals, timeline, and budget…" required></textarea>
+    <button class="button reveal" type="submit">Send Message</button>
+  </form>
+</section>
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Media preview">
+  <div class="lightbox-content">
+    <div class="lightbox-media" id="lightboxMedia"></div>
+    <div class="ctrls">
+      <button class="icon-btn" id="prevBtn" aria-label="Previous">⟨ Prev</button>
+      <div style="opacity:.8" id="lightboxTitle">Title</div>
+      <button class="icon-btn" id="nextBtn" aria-label="Next">Next ⟩</button>
+    </div>
+    <button class="icon-btn" id="closeLb" aria-label="Close">✕ Close</button>
+  </div>
+</div>
+  <footer>
+    © <span id="year"></span> Cliff-De-Tech — All Rights Reserved.
+  </footer>
+  <!-- ...scripts as needed... -->
+   <!-- Link to your JS file -->
+<script src="JS/main.js"></script>
+</body>
+</html>

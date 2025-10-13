@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Link to your CSS file -->
+<link rel="stylesheet" href="CSS/style.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+<!-- ...existing code... -->
+<link rel="icon" type="image/png" href="assets/logo.png">
+<!-- ...existing code... -->
+<title>Home | Cliff-De-Tech</title>
+<meta name="description" content="Cliff-De-Tech" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="bg-overlay-gradient" aria-hidden="true"></div>
+
+<!-- ====== NAV ====== -->
+<nav class="nav">
+  <a class="brand" href="home.html" aria-label="Home">
+    <!-- Replace with your logo -->
+    <img src="assets/logo.png" alt="Logo placeholder" />
+    <span>Cliff-De-Tech</span>
+  </a>
+  <ul>
+    <li><a href="home.html" class="nav-link active">Home</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+    <li><a href="portfolio.html" class="nav-link">Projects</a></li>
+    <li><a href="skills.html" class="nav-link">Skills</a></li>
+    <li><a href="contact.html" class="nav-link">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <i class='bx bxs-moon'></i>
+    </button>
+  </div>
+  <button class="menu-btn" aria-label="Open menu">&#9776;</button>
+</nav>
+<!-- ====== HERO ====== -->
+<!-- ...existing code... -->
+<header id="home" class="hero custom-hero">
+  <div class="hero-left">
+    <span class="hero-badge">FREELANCE GRAPHIC DESIGNER &middot; UI/UX DESIGNER &middot; WEB DESIGNER</span>
+    <p class="hero-intro">Welcome , my name is</p>
+    <h1 class="hero-title">
+      Clifford<br>
+      Opoku–<br>
+      Sarkodie
+    </h1>
+    <h2 class="hero-subtitle">CEO of Cliff-De-Tech.<br></h2>
+    <div class="hero-socials">
+                    <a href="https://github.com/cliff-de-tech" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;"><i class='bx bxl-github'></i></a>
+                    <a href="https://www.linkedin.com/in/clifford-opoku-sarkodie-377505369/" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://x.com/Owura_o8700" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;"><i class='bxl  bx-twitter-x'  ></i></a>
+                    <a href="https://www.instagram.com/cliffdesignz/" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;"><i class='bx bxl-instagram'></i></a>
+                </div> 
+    <div class="hero-cta">
+      <a href="about.html" class="button outline">About Me</a>
+      <a href="portfolio.html" class="button outline">Projects</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-image-bg">
+      <img src="assets/1.jpg" alt="Clifford Opoku–Sarkodie" class="hero-image" />
+      <div class="hero-dots hero-dots-left"></div>
+      <div class="hero-dots hero-dots-right"></div>
+    </div>
+  </div>
+</header>
+<!-- ...existing code... -->
+
+<!-- ====== PORTFOLIO ====== -->
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Media preview">
+  <div class="lightbox-content">
+    <div class="lightbox-media" id="lightboxMedia"></div>
+    <div class="ctrls">
+      <button class="icon-btn" id="prevBtn" aria-label="Previous">⟨ Prev</button>
+      <div style="opacity:.8" id="lightboxTitle">Title</div>
+      <button class="icon-btn" id="nextBtn" aria-label="Next">Next ⟩</button>
+    </div>
+    <button class="icon-btn" id="closeLb" aria-label="Close">✕ Close</button>
+  </div>
+</div>
+<!-- End Lightbox -->
+
+<!-- ====== VIDEO PLACEHOLDER ====== -->
+<section class="video-card" style="margin: 64px auto 0 auto; max-width: 980px;">
+  <div class="frame" style="aspect-ratio: 16/9; background: #181c22; display: flex; align-items: center; justify-content: center;">
+    <video controls poster="assets/wtch this video.png" style="width:100%; height:auto; border-radius:16px; background:#000;">
+      <source src="assets/Advert video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+  © <span id="year"></span> Cliff-De-Tech — All Rights Reserved.
+</footer>
+<!-- Link to your JS file -->
+<script src="JS/main.js"></script>
+<script>
+  const video = document.querySelector('video');
+  video.addEventListener('ended', () => {
+    video.load();
+  });
+</script>
+</body>
+</html>

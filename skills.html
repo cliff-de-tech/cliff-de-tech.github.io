@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ...head content... -->
+    <!-- Link to your CSS file -->
+<link rel="stylesheet" href="CSS/style.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+<link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+<!-- ...existing code... -->
+<link rel="icon" type="image/png" href="assets/logo.png">
+<!-- ...existing code... -->
+<title>Skills | Cliff-De-Tech</title>
+<meta name="description" content="Cliff-De-Tech" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="bg-overlay-gradient" aria-hidden="true"></div>
+  <!-- ...existing code... -->
+</head>
+<body>
+  <!-- ...background and nav... -->
+  <nav class="nav">
+    <a class="brand" href="home.html" aria-label="Home">
+      <img src="assets/logo.png" alt="Logo placeholder" />
+      <span>Cliff-De-Tech</span>
+    </a>
+    <ul>
+      <li><a href="home.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="portfolio.html" class="nav-link">Projects</a></li>
+      <li><a href="skills.html" class="nav-link active">Skills</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <i class='bx bxs-moon'></i>
+    </button>
+    <button class="menu-btn" aria-label="Open menu">&#9776;</button>
+  </nav>
+
+  <!-- ====== SKILLS REDESIGN ====== -->
+  <section id="skills">
+    <h2 class="section-title reveal">My Skills & Toolkit</h2>
+    <p class="section-desc reveal">A blend of creative talent, technical expertise, and sharp business instincts to bring your vision to life.</p>
+
+    <!-- Professional Skills Section -->
+    <div class="professional-skills-card reveal">
+        <h3 class="skill-category-title"><i class='bx bx-briefcase-alt-2'></i> Professional (Soft) Skills</h3>
+        <div class="professional-skills-list">
+            <div class="prof-skill">
+                <i class='bx bx-conversation'></i>
+                <span>Client Communication</span>
+            </div>
+            <div class="prof-skill">
+                <i class='bx bx-time-five'></i>
+                <span>Time Management</span>
+            </div>
+            <div class="prof-skill">
+                <i class='bx bx-line-chart'></i>
+                <span>Business Acumen</span>
+            </div>
+             <div class="prof-skill">
+                <i class='bx bx-bulb'></i>
+                <span>Problem-Solving</span>
+            </div>
+            <div class="prof-skill">
+                <i class='bx bx-git-compare'></i>
+                <span>Adaptability</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technical Skills Grid -->
+    <div class="skills-grid">
+      <!-- Graphic Design Card -->
+      <div class="skill-category-card reveal">
+        <h3 class="skill-category-title"><i class='bx bxs-paint'></i> Graphic Design</h3>
+        <p class="skill-category-desc">Creating compelling visual content, from brand identities to marketing materials, that communicates clearly and effectively.</p>
+        <h4 class="tools-title">Key Tools</h4>
+        <div class="tools-list">
+          <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg" class="tool-icon" alt="Illustrator"><span>Illustrator</span></div>
+          <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" class="tool-icon" alt="Photoshop"><span>Photoshop</span></div>
+          <div class="tool-item"><img src="https://www.vectorlogo.zone/logos/canva/canva-icon.svg" class="tool-icon" alt="Canva"><span>Canva</span></div>
+          <div class="tool-item"><svg class="tool-icon" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#e65a6d" d="M128 0C57.308 0 0 57.308 0 128s57.308 128 128 128 128-57.308 128-128S198.692 0 128 0zm-1.127 23.957c.42 0 .84.03 1.25.088 35.094.02 67.234 14.155 90.03 36.95 23.364 23.363 36.96 56.435 36.96 90.588 0 32.55-12.25 62.77-33.61 86.44-1.28-2.61-2.92-5.07-4.9-7.32-13.8-15.68-30.8-28.5-49.82-37.47-5.55-2.62-11.23-4.32-16.92-5-11.83-1.42-23.61 1.04-33.8 6.9-1.95 1.13-3.83 2.4-5.63 3.8-19.34 14.8-31.5 37.8-34.62 63.15-.38 3.08-.6 6.2-.6 9.4 0 .3-.02.6-.02.9-42.06-25.13-68.21-70.16-68.21-120.45C2.11 60.127 57.85 5.517 125.1 2.227c.9-.04 1.8-.07 2.77-.07z" transform="translate(0)"></path><path fill="#f2a8b2" d="M126.873 23.957c-1.87 0-2.81.03-3.77.07C59.81 27.277 5.09 82.257 2.12 150.047c0 .3-.01.6-.02.9 0 3.2.22 6.32.6 9.4 3.12 25.35 15.28 48.35 34.62 63.15 1.8 1.4 3.68 2.67 5.63 3.8 10.19 5.86 21.97 8.32 33.8 6.9 5.69-.68 11.37-2.38 16.92-5 19.02-8.97 36.02-21.79 49.82-37.47 1.98-2.25 3.62-4.71 4.9-7.32-1.25.12-2.52.18-3.79.18-35.093 0-67.233-14.155-90.03-36.95S56.093 59.418 56.093 24.325c0-.12.003-.24.003-.36z"></path></svg><span>Procreate</span></div>
+        </div>
+      </div>
+
+      <!-- UI/UX Design Card -->
+      <div class="skill-category-card reveal">
+        <h3 class="skill-category-title"><i class='bx bx-ruler'></i> UI/UX Design</h3>
+        <p class="skill-category-desc">Crafting intuitive, user-centered digital experiences through research, wireframing, and interactive prototyping.</p>
+        <h4 class="tools-title">Key Tools</h4>
+        <div class="tools-list">
+          <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" class="tool-icon" alt="Figma"><span>Figma</span></div>
+          <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xd/xd-plain.svg" class="tool-icon" alt="Adobe XD"><span>Adobe XD</span></div>
+          <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sketch/sketch-original.svg" class="tool-icon" alt="Sketch"><span>Sketch</span></div>
+        </div>
+      </div>
+
+      <!-- Web Design Card -->
+      <div class="skill-category-card reveal">
+        <h3 class="skill-category-title"><i class='bx bx-code-alt'></i> Web Design</h3>
+        <p class="skill-category-desc">Building responsive, high-performance websites with a focus on clean code and seamless user interaction.</p>
+        <h4 class="tools-title">Key Tools</h4>
+        <div class="tools-list">
+          <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="tool-icon" alt="HTML5"><span>HTML5</span></div>
+          <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="tool-icon" alt="CSS3"><span>CSS3</span></div>
+          <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="tool-icon" alt="JavaScript"><span>JavaScript</span></div>
+          <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="tool-icon" alt="Git"><span>Git & GitHub</span></div>
+          <div class="tool-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="tool-icon" alt="VS Code"><span>VS Code</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SERVICES ====== -->
+  <section id="services">
+  <h2 class="section-title reveal">My Services</h2>
+  <p class="section-desc reveal">Pick a lane or mix & match — I tailor deliverables to your goals, timeline, and budget.</p>
+
+  <!-- Tabs -->
+  <div class="tabs" style="display:flex; gap:12px; margin-bottom:24px;">
+    <button class="tab-btn active" data-tab="all">All</button>
+    <button class="tab-btn" data-tab="graphic">Graphic Design</button>
+    <button class="tab-btn" data-tab="uiux">UI/UX Design</button>
+    <button class="tab-btn" data-tab="web">Web Design</button>
+  </div>
+
+  <div class="services-grid">
+    <article class="service-card reveal" data-tilt data-category="graphic">
+      <div class="chip">Popular</div>
+      <div class="icon">🎨</div>
+      <h3>Brand Identity</h3>
+      <p>Logo, type, color, and robust brand systems with scalable guidelines.</p>
+    </article>
+    <article class="service-card reveal" data-tilt data-category="graphic">
+      <div class="icon">🛒</div>
+      <h3>Marketing & Advertising Materials</h3>
+      <p>Posters, flyers, brochures, social media creatives.</p>
+    </article>
+    <article class="service-card reveal" data-tilt data-category="graphic">
+      <div class="icon">📦</div>
+      <h3>Packaging & Print</h3>
+      <p>Premium unboxing experiences and editorial layouts with tactile flair.</p>
+    </article>
+    <article class="service-card reveal" data-tilt data-category="graphic">
+      <div class="icon">📚</div>
+      <h3>Editorial & Print Design</h3>
+      <p>Magazines, catalogs, business cards, and presentations.</p>
+    </article>
+    <article class="service-card reveal" data-tilt data-category="uiux">
+      <div class="chip">Popular</div>
+      <div class="icon">💻</div>
+      <h3>UI/UX Design</h3>
+      <p>Intuitive user interfaces, wireframes, and engaging digital experiences.</p>
+    </article>
+    <article class="service-card reveal" data-tilt data-category="uiux">
+      <div class="icon">📱</div>
+      <h3>Mobile App Design</h3>
+      <p>Modern mobile UI/UX for iOS and Android apps.</p>
+    </article>
+    <article class="service-card reveal" data-tilt data-category="uiux">
+      <div class="icon">👨🏻‍💻</div>
+      <h3>User Experience (UX) Research & Testing</h3>
+      <p>Improving usability through user research, testing, and feedback.</p>
+    </article>
+    <article class="service-card reveal" data-tilt data-category="web">
+      <div class="icon">🌐</div>
+      <h3>Web Design</h3>
+      <p>Responsive websites that combine functionality with engaging visuals.</p>
+    </article>
+    <article class="service-card reveal" data-tilt data-category="web">
+      <div class="icon">🖥️</div>
+      <h3>Landing Pages</h3>
+      <p>Conversion-focused landing pages for products and campaigns.</p>
+    </article>
+    <article class="service-card reveal" data-tilt data-category="web">
+      <div class="icon">🌏</div>
+      <h3>Website Maintenance & Updates</h3>
+      <p>Keeping sites updated, secure, and visually fresh.</p>
+    </article>
+  </div>
+</section>
+  <!-- ====== FOOTER ====== -->
+  <footer>
+    © <span id="year"></span> Cliff-De-Tech — All Rights Reserved.
+  </footer>
+  <!-- Link to your JS file -->
+<script src="JS/main.js"></script>
+  <!-- ...scripts as needed... -->
+</body>
+</html>
