@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://cliff-de-tech.github.io/</loc>
+  <lastmod>2025-10-13T06:40:59+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://cliff-de-tech.github.io/index.html</loc>
+  <lastmod>2025-10-13T06:40:59+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cliff-de-tech.github.io/about.html</loc>
+  <lastmod>2025-10-13T06:40:59+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cliff-de-tech.github.io/portfolio.html</loc>
+  <lastmod>2025-10-13T06:40:59+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cliff-de-tech.github.io/skills.html</loc>
+  <lastmod>2025-10-13T06:40:59+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cliff-de-tech.github.io/contact.html</loc>
+  <lastmod>2025-10-13T06:40:59+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cliff-de-tech.github.io/assets/Clifford%20Resume.pdf</loc>
+  <lastmod>2025-10-13T06:40:59+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cliff-de-tech.github.io/assets/Clifford%20Opoku-Sarkodie%20_Recommendation_Letter.pdf</loc>
+  <lastmod>2025-10-13T06:40:59+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>

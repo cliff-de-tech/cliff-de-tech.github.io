@@ -81,7 +81,8 @@ document.addEventListener('DOMContentLoaded', function() {
     entries.forEach(en=>{
       if(en.isIntersecting){
         en.target.classList.add('visible');
-        io.unobserve(en.target);
+      } else {
+        en.target.classList.remove('visible');
       }
     })
   }, {threshold:.16});
@@ -121,62 +122,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Initialize button state
   updateBtn();
-})();
-
-/* ====== PORTFOLIO LIGHTBOX ====== */
-(function lightbox(){
-  const items = $$('.tile');
-  if (items.length === 0) return;
-  
-  const lb = $('#lightbox');
-  const media = $('#lightboxMedia');
-  const title = $('#lightboxTitle');
-  const close = $('#closeLb');
-  const prev = $('#prevBtn');
-  const next = $('#nextBtn');
-  let idx = 0;
-
-  const open = (i)=>{
-    idx = i;
-    const it = items[idx];
-    const type = it.dataset.type;
-    const src = it.dataset.src;
-    const ttl = it.dataset.title || '';
-    media.innerHTML = '';
-    if(type === 'video'){
-      const v = document.createElement('video');
-      v.src = src; v.controls = true; v.autoplay = true; v.style.width='100%';
-      media.appendChild(v);
-    }else{
-      const img = new Image();
-      img.src = src; img.alt = ttl;
-      media.appendChild(img);
-    }
-    title.textContent = ttl;
-    lb.classList.add('open');
-    document.body.style.overflow='hidden';
-  };
-  const closeLb = ()=>{
-    lb.classList.remove('open');
-    media.innerHTML='';
-    document.body.style.overflow='';
-  }
-  const go = (dir)=>{
-    idx = (idx + dir + items.length) % items.length;
-    open(idx);
-  }
-
-  items.forEach((it,i)=> it.addEventListener('click', ()=> open(i)));
-  close.addEventListener('click', closeLb);
-  lb.addEventListener('click', (e)=> { if(e.target === lb) closeLb(); });
-  document.addEventListener('keydown', (e)=>{
-    if(!lb.classList.contains('open')) return;
-    if(e.key === 'Escape') closeLb();
-    if(e.key === 'ArrowRight') go(1);
-    if(e.key === 'ArrowLeft') go(-1);
-  });
-  next.addEventListener('click', ()=> go(1));
-  prev.addEventListener('click', ()=> go(-1));
 })();
 
 // ====== SERVICES TABS FILTER ======
@@ -573,4 +518,100 @@ window.addEventListener('DOMContentLoaded', function() {
   if (backBtn) {
     backBtn.addEventListener('click', showCategories);
   }
+})();
+/* ====== PORTFOLIO LIGHTBOX ====== */
+(function lightbox(){
+  const items = $$('.tile');
+  if (items.length === 0) return;
+  
+  const lb = $('#lightbox');
+  const media = $('#lightboxMedia');
+  const title = $('#lightboxTitle');
+  const description = $('#lightboxDescription');
+  const close = $('#closeLb');
+  const prev = $('#prevBtn');
+  const next = $('#nextBtn');
+  let currentItemIndex = 0;
+  let currentImageIndex = 0;
+  let currentImages = [];
+
+  const open = (itemIndex) => {
+    currentItemIndex = itemIndex;
+    const it = items[currentItemIndex];
+    const imagesAttr = it.dataset.images;
+    const srcAttr = it.dataset.src;
+    const ttl = it.dataset.title || '';
+    const desc = it.dataset.description || '';
+
+    if (imagesAttr) {
+      currentImages = imagesAttr.split(',');
+      currentImageIndex = 0;
+    } else {
+      currentImages = srcAttr ? [srcAttr] : [];
+      currentImageIndex = 0;
+    }
+
+    title.textContent = ttl;
+    description.innerHTML = desc;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    showImage();
+  };
+
+  const showImage = () => {
+    if (currentImages.length === 0) return;
+    media.innerHTML = '';
+    const img = new Image();
+    img.src = currentImages[currentImageIndex];
+    img.alt = title.textContent;
+    media.appendChild(img);
+
+    if (currentImages.length > 1) {
+      prev.style.display = 'block';
+      next.style.display = 'block';
+      prev.style.visibility = currentImageIndex === 0 ? 'hidden' : 'visible';
+      next.style.visibility = currentImageIndex === currentImages.length - 1 ? 'hidden' : 'visible';
+    } else {
+      prev.style.display = 'block';
+      next.style.display = 'block';
+      prev.style.visibility = 'visible';
+      next.style.visibility = 'visible';
+    }
+  };
+
+  const closeLb = () => {
+    lb.classList.remove('open');
+    media.innerHTML = '';
+    document.body.style.overflow = '';
+  };
+
+  const go = (dir) => {
+    if (currentImages.length > 1) {
+      const newImageIndex = currentImageIndex + dir;
+      if (newImageIndex >= 0 && newImageIndex < currentImages.length) {
+        currentImageIndex = newImageIndex;
+        showImage();
+      } else {
+        // at the end of the images, go to the next item
+        currentItemIndex = (currentItemIndex + dir + items.length) % items.length;
+        open(currentItemIndex);
+      }
+    } else {
+      // only one image, so go to the next item
+      currentItemIndex = (currentItemIndex + dir + items.length) % items.length;
+      open(currentItemIndex);
+    }
+  };
+
+  items.forEach((it, i) => it.addEventListener('click', () => open(i)));
+  close.addEventListener('click', closeLb);
+  lb.addEventListener('click', (e) => { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowRight') go(1);
+    if (e.key === 'ArrowLeft') go(-1);
+  });
+  next.addEventListener('click', () => go(1));
+  prev.addEventListener('click', () => go(-1));
 })();

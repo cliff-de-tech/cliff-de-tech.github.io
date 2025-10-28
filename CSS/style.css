@@ -1519,3 +1519,19 @@ body.light-theme .portfolio-category-card:hover {
   justify-content: center;
   margin: 0 20px;
 }
+
+@media (min-width: 769px) {
+  .lightbox-media {
+    max-height: 80vh;
+  }
+  .lightbox-media img {
+    height: 100%;
+    object-fit: contain;
+  }
+}
+.lightbox .ctrls,
+.lightbox #closeLb {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
