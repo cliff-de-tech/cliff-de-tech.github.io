@@ -4,10 +4,13 @@
   <link rel="stylesheet" href="CSS/style.css">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
-  <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
-  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"></noscript>
+  <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet' media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"></noscript>
+  <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet' media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css"></noscript>
+  <link rel="icon" type="image/webp" href="assets/logo.webp">
   <title>My Skills | Clifford Opoku-Sarkodie (Graphic, UI/UX, Web Design)</title>
   <meta name="google-site-verification" content="UxjWMFhIU8iz2KEHdoypfxotkE1lo-xSWkkKhqYYpBE" />
   <meta name="description" content="Explore the professional and technical skills of Clifford Opoku-Sarkodie, including graphic design (Photoshop, Illustrator), UI/UX (Figma, XD), and web design (HTML, CSS, JS)." />
@@ -18,14 +21,12 @@
 
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
 <div class="bg-overlay-gradient" aria-hidden="true"></div>
-  <!-- ...existing code... -->
-</head>
+  </head>
 <body>
-  <!-- ...background and nav... -->
   <nav class="nav">
     <a class="brand" href="index.html" aria-label="Home">
 
-      <img src="assets/logo.png" alt="Cliff-De-Tech Logo" />
+      <img src="assets/logo.webp" alt="Cliff-De-Tech Logo" width="32" height="32" />
       <span>Cliff-De-Tech</span>
     </a>
     <ul>
@@ -41,12 +42,10 @@
     <button class="menu-btn" aria-label="Open menu">&#9776;</button>
   </nav>
 
-  <!-- ====== SKILLS REDESIGN ====== -->
   <section id="skills" class="reveal">
     <h2 class="section-title reveal">My Skills & Toolkit</h2>
     <p class="section-desc reveal">A blend of creative talent, technical expertise, and sharp business instincts to bring your vision to life.</p>
 
-    <!-- Professional Skills Section -->
     <div class="professional-skills-card reveal">
         <h3 class="skill-category-title"><i class='bx bx-briefcase-alt-2'></i> Professional (Soft) Skills</h3>
         <div class="professional-skills-list">
@@ -77,9 +76,7 @@
         </div>
     </div>
 
-    <!-- Technical Skills Grid -->
     <div class="skills-grid">
-      <!-- Graphic Design Card -->
       <div class="skill-category-card reveal">
         <h3 class="skill-category-title"><i class='bx bxs-paint'></i> Graphic Design</h3>
         <p class="skill-category-desc">Creating compelling visual content, from brand identities to marketing materials, that communicates clearly and effectively.</p>
@@ -91,7 +88,6 @@
         </div>
       </div>
 
-      <!-- UI/UX Design Card -->
       <div class="skill-category-card reveal">
         <h3 class="skill-category-title"><i class='bx bx-ruler'></i> UI/UX Design</h3>
         <p class="skill-category-desc">Crafting intuitive, user-centered digital experiences through research, wireframing, and interactive prototyping.</p>
@@ -103,7 +99,6 @@
         </div>
       </div>
 
-      <!-- Web Design Card -->
       <div class="skill-category-card reveal">
         <h3 class="skill-category-title"><i class='bx bx-code-alt'></i> Web Design</h3>
         <p class="skill-category-desc">Building responsive, high-performance websites with a focus on clean code and seamless user interaction.</p>
@@ -119,12 +114,10 @@
     </div>
   </section>
 
-  <!-- ====== SERVICES ====== -->
   <section id="services" class="reveal">
   <h2 class="section-title reveal">My Services</h2>
   <p class="section-desc reveal">Pick a lane or mix & match — I tailor deliverables to your goals, timeline, and budget.</p>
 
-  <!-- Tabs -->
   <div class="tabs" style="display:flex; gap:12px; margin-bottom:24px;">
     <button class="tab-btn active" data-tab="all">All</button>
     <button class="tab-btn" data-tab="graphic">Graphic Design</button>
@@ -187,12 +180,47 @@
     </article>
   </div>
 </section>
-  <!-- ====== FOOTER ====== -->
   <footer>
-    © <span id="year"></span> Cliff-De-Tech — All Rights Reserved.
-  </footer>
-  <!-- Link to your JS file -->
-<script src="JS/main.js"></script>
-  <!-- ...scripts as needed... -->
-</body>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h3 class="footer-brand">Cliff-De-Tech</h3>
+      <p>A designer focused on creating user-centered digital experiences.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="portfolio.html">Projects</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Follow me</h4>
+      <ul>
+        <li><a href="https://github.com/cliff-de-tech" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/clifford-opoku-sarkodie-377505369/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/cliffdesignz/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://x.com/Owura_o8700" target="_blank" rel="noopener">X (Twitter)</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Sign up for updates</h4>
+      <p>Receive news and updates straight to your inbox.</p>
+      <form class="footer-subscribe" action="https://formspree.io/f/xdkldvbn" method="post">
+        <input class="input" type="email" name="email" placeholder="Email Address" required />
+        <button class="button" type="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© <span id="year"></span> Cliff-De-Tech — All Rights Reserved.</p>
+  </div>
+</footer>
+  <script src="JS/main.js"></script>
+  </body>
 </html>

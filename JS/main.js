@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-/* ====== NAV: smooth active link + mobile ====== */
+/* ====== NAV: smooth active link ====== */
 (function navEnhance(){
   const links = $$('.nav-link');
   // Correctly create sections array from links, filtering out nulls for links that don't match an ID
@@ -42,9 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
       return null;
     }
   }).filter(Boolean); // remove nulls
-
-  const mobileBtn = $('.menu-btn');
-  const mobileMenu = $('#mobileMenu');
 
   // active link on scroll
   if (sections.length > 0) {
@@ -65,13 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     sections.forEach(s=> s && obs.observe(s));
   }
-
-
-  // mobile menu toggle
-  mobileBtn?.addEventListener('click', ()=> mobileMenu.classList.toggle('open'));
-  $('#mobileMenu')?.addEventListener('click', (e)=>{
-    if(e.target.matches('a')) mobileMenu.classList.remove('open');
-  });
 })();
 
 /* ====== REVEAL ON SCROLL ====== */
@@ -382,53 +372,8 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Scroll-to-top button logic
-(function scrollTopBtn(){
-  const btn = document.getElementById('scrollTopBtn');
-  const portfolio = document.getElementById('portfolio');
-  function toggleBtn() {
-    if (!portfolio || !btn) return;
-    const rect = portfolio.getBoundingClientRect();
-    // Show button if top of portfolio is above the top of the viewport
-    if (rect.top <= 0) {
-      btn.classList.add('show');
-    } else {
-      btn.classList.remove('show');
-    }
-  }
-  window.addEventListener('scroll', toggleBtn);
-  
-  if(btn) {
-      btn.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        btn.classList.remove('show');
-      });
-  }
-})();
-
-// WhatsApp button logic: show only when portfolio section is reached
-(function whatsappBtn(){
-  const btn = document.getElementById('whatsappBtn');
-  const portfolio = document.getElementById('portfolio');
-  function toggleBtn() {
-    if (!portfolio || !btn) return;
-    const rect = portfolio.getBoundingClientRect();
-    // Show button if top of portfolio is above the top of the viewport
-    if (rect.top <= 0) {
-      btn.classList.add('show');
-    } else {
-      btn.classList.remove('show');
-    }
-  }
-  window.addEventListener('scroll', toggleBtn);
-
-  // Optional: Hide button after click (if you want)
-  if(btn) {
-      btn.addEventListener('click', function() {
-        btn.classList.remove('show');
-      });
-  }
-})();
+// Scroll-to-top button logic - REMOVED
+// WhatsApp button logic - REMOVED
 
 /* ====== THEME TOGGLE ====== */
 (function themeToggle() {

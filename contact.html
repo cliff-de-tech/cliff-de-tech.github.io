@@ -4,10 +4,13 @@
   <link rel="stylesheet" href="CSS/style.css">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
-  <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
-  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"></noscript>
+  <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet' media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"></noscript>
+  <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet' media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css"></noscript>
+  <link rel="icon" type="image/png" href="assets/logo.webp">
   <title>Contact Me | Clifford Opoku-Sarkodie (Designer)</title>
   <meta name="google-site-verification" content="UxjWMFhIU8iz2KEHdoypfxotkE1lo-xSWkkKhqYYpBE" />
   <meta name="description" content="Get in touch with Clifford Opoku-Sarkodie for your next project. Contact me for freelance graphic design, UI/UX, or web design work in Accra, Ghana or remotely." />
@@ -18,14 +21,12 @@
 
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
 <div class="bg-overlay-gradient" aria-hidden="true"></div>
-  <!-- ...existing code... -->
-</head>
+  </head>
 <body>
-  <!-- ...background and nav... -->
   <nav class="nav">
     <a class="brand" href="index.html" aria-label="Home">
       
-      <img src="assets/logo.png" alt="Cliff-De-Tech Logo" />
+      <img src="assets/logo.webp" alt="Cliff-De-Tech Logo" width="32" height="32" />
       <span>Cliff-De-Tech</span>
     </a>
     <ul>
@@ -42,7 +43,6 @@
     </div>
     <button class="menu-btn" aria-label="Open menu">&#9776;</button>
   </nav>
-  <!-- ====== CONTACT ====== -->
   <section id="contact">
   <div class="card reveal" style="max-width:500px; margin-bottom:28px; background:var(--glass); border:1px solid rgba(255,255,255,.12); box-shadow:var(--shadow); border-radius:var(--radius); padding:22px;">
   <h3 style="margin-bottom:10px; font-family:'Space Grotesk'; font-size:22px;">Contact Details</h3>
@@ -75,7 +75,6 @@
     <button class="button reveal" type="submit">Send Message</button>
   </form>
 </section>
-<!-- Lightbox -->
 <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Media preview">
   <div class="lightbox-content">
     <div class="lightbox-media" id="lightboxMedia"></div>
@@ -88,10 +87,46 @@
   </div>
 </div>
   <footer>
-    © <span id="year"></span> Cliff-De-Tech — All Rights Reserved.
-  </footer>
-  <!-- ...scripts as needed... -->
-   <!-- Link to your JS file -->
-<script src="JS/main.js"></script>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h3 class="footer-brand">Cliff-De-Tech</h3>
+      <p>A designer focused on creating user-centered digital experiences.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="portfolio.html">Projects</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Follow me</h4>
+      <ul>
+        <li><a href="https://github.com/cliff-de-tech" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/clifford-opoku-sarkodie-377505369/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/cliffdesignz/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://x.com/Owura_o8700" target="_blank" rel="noopener">X (Twitter)</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Sign up for updates</h4>
+      <p>Receive news and updates straight to your inbox.</p>
+      <form class="footer-subscribe" action="https://formspree.io/f/xdkldvbn" method="post">
+        <input class="input" type="email" name="email" placeholder="Email Address" required />
+        <button class="button" type="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© <span id="year"></span> Cliff-De-Tech — All Rights Reserved.</p>
+  </div>
+</footer>
+  <script src="JS/main.js"></script>
 </body>
 </html>

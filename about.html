@@ -4,8 +4,9 @@
   <link rel="stylesheet" href="CSS/style.css">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"></noscript>
+  <link rel="icon" type="image/png" href="assets/logo.webp">
   <title>About Me | Clifford Opoku-Sarkodie (Designer)</title>
   <meta name="google-site-verification" content="UxjWMFhIU8iz2KEHdoypfxotkE1lo-xSWkkKhqYYpBE" />
   <meta name="description" content="Learn about Clifford Opoku-Sarkodie, a passionate designer with experience from ALX Africa and Ike Media GH, currently studying at the University of the People." />
@@ -16,14 +17,12 @@
 
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
 <div class="bg-overlay-gradient" aria-hidden="true"></div>
-  <!-- ...existing code... -->
-</head>
+  </head>
 <body>
-  <!-- ...background and nav... -->
   <nav class="nav">
     <a class="brand" href="index.html" aria-label="Home">
       
-      <img src="assets/logo.png" alt="Cliff-De-Tech Logo" />
+      <img src="assets/logo.webp" alt="Cliff-De-Tech Logo" width="32" height="32" />
       <span>Cliff-De-Tech</span>
     </a>
     <ul>
@@ -39,7 +38,6 @@
     </div>
     <button class="menu-btn" aria-label="Open menu">&#9776;</button>
   </nav>
-  <!-- ====== ABOUT ====== -->
   <section id="about">
   <h2 class="section-title reveal">About Me</h2>
   <p class="section-desc reveal">Clifford Opoku-Sarkodie is a:</p>
@@ -68,14 +66,12 @@
         </ul>
     </div>
 
-    <img class="profile reveal" src="assets/2.jpg" alt="A profile photo of Clifford Opoku-Sarkodie" />
+    <img class="profile reveal" src="assets/2.webp" alt="A profile photo of Clifford Opoku-Sarkodie" />
   </div>
 </section>
 
-<!-- Add this inside your about.html, below your main about content -->
 <section class="about-sections">
 
-  <!-- Experience Section -->
   <h2 class="section-title" style="color:#ffffff; margin-top:48px;">Experience</h2>
   <div class="about-experience-header" style="display:flex;justify-content:space-between;align-items:center;">
     <div></div>
@@ -139,7 +135,6 @@ Gained hands-on experience with HTML, CSS, JavaScript, GitHub Pages, and website
     <br>
     <br>
     <br>
-  <!-- Education Section -->
   <h2 class="section-title" style="color:#e1007b;">Education</h2>
   <div class="about-cards">
     <div class="about-card">
@@ -172,10 +167,7 @@ Gained hands-on experience with HTML, CSS, JavaScript, GitHub Pages, and website
             <i class='bx bx-show'></i> View Certification
           </button>
         </div>
-<!-- Certification Modal/Lightbox -->
-<!-- Certification Modal/Lightbox: moved to end of body for z-index/blur layering -->
-
-      </div>
+</div>
       <button class="read-more-btn">Read More</button>
     </div>
     <div class="about-card">
@@ -193,11 +185,8 @@ Gained hands-on experience with HTML, CSS, JavaScript, GitHub Pages, and website
       <button class="read-more-btn">Read More</button>
     </div>
   </div>
-  <!-- Recommendation Letter Download -->
+  </section>
 
-</section>
-
-<!-- Lightbox -->
 <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Media preview">
   <div class="lightbox-content">
     <div class="lightbox-media" id="lightboxMedia"></div>
@@ -210,16 +199,51 @@ Gained hands-on experience with HTML, CSS, JavaScript, GitHub Pages, and website
   </div>
 </div>
   <footer>
-    © <span id="year"></span> Cliff-De-Tech — All Rights Reserved.
-  </footer>
-  <!-- ...scripts as needed... -->
-   <!-- Link to your JS file -->
-<script src="JS/main.js"></script>
-<!-- Modal must be outside main content for proper layering -->
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h3 class="footer-brand">Cliff-De-Tech</h3>
+      <p>A designer focused on creating user-centered digital experiences.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="portfolio.html">Projects</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Follow me</h4>
+      <ul>
+        <li><a href="https://github.com/cliff-de-tech" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/clifford-opoku-sarkodie-377505369/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/cliffdesignz/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://x.com/Owura_o8700" target="_blank" rel="noopener">X (Twitter)</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Sign up for updates</h4>
+      <p>Receive news and updates straight to your inbox.</p>
+      <form class="footer-subscribe" action="https://formspree.io/f/xdkldvbn" method="post">
+        <input class="input" type="email" name="email" placeholder="Email Address" required />
+        <button class="button" type="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© <span id="year"></span> Cliff-De-Tech — All Rights Reserved.</p>
+  </div>
+</footer>
+  <script src="JS/main.js"></script>
 <div class="lightbox" id="certLightbox" aria-modal="true" role="dialog" aria-label="Certificate preview" style="display:none;">
   <div class="lightbox-content">
     <div class="lightbox-media" id="certLightboxMedia">
-      <img src="assets/89-professional-foundations-certificate-clifford-opoku-sarkodie.png" alt="ALX Professional Foundations Certificate" style="max-width:100%;border-radius:12px;" />
+      <img src="assets/89-professional-foundations-certificate-clifford-opoku-sarkodie.webp" alt="ALX Professional Foundations Certificate" style="max-width:100%;border-radius:12px;" />
     </div>
     <div class="ctrls">
       <button class="icon-btn" id="closeCertLb" aria-label="Close">✕ Close</button>
@@ -230,7 +254,7 @@ Gained hands-on experience with HTML, CSS, JavaScript, GitHub Pages, and website
 <div class="lightbox" id="recLightbox" aria-modal="true" role="dialog" aria-label="Recommendation Letter preview" style="display:none;">
   <div class="lightbox-content">
     <div class="lightbox-media" id="recLightboxMedia">
-      <img src="assets/Clifford Opoku-Sarkodie _Recommendation_Letter_page-0001.jpg" alt="Recommendation Letter" style="max-width:100%;border-radius:12px;" />
+      <img src="assets/Clifford Opoku-Sarkodie _Recommendation_Letter_page-0001.webp" alt="Recommendation Letter" style="max-width:100%;border-radius:12px;" />
     </div>
     <div class="ctrls">
       <button class="icon-btn" id="closeRecLb" aria-label="Close">✕ Close</button>

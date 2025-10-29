@@ -4,9 +4,11 @@
   <link rel="stylesheet" href="CSS/style.css">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
-  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"></noscript>
+  <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet' media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css"></noscript>
+  <link rel="icon" type="image/webp" href="assets/logo.webp">
   <title>Clifford Opoku-Sarkodie | Graphic, UI/UX & Web Designer Portfolio</title>
   <meta name="google-site-verification" content="UxjWMFhIU8iz2KEHdoypfxotkE1lo-xSWkkKhqYYpBE" />
   <meta name="description" content="Explore the portfolio of Clifford Opoku-Sarkodie, a freelance graphic designer, UI/UX, and web designer focused on creating user-centered digital experiences." />
@@ -18,10 +20,9 @@
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
 <div class="bg-overlay-gradient" aria-hidden="true"></div>
 
-<!-- ====== NAV ====== -->
 <nav class="nav">
   <a class="brand" href="index.html" aria-label="Home">
-    <img src="assets/logo.png" alt="Cliff-De-Tech Logo" />
+    <img src="assets/logo.webp" alt="Cliff-De-Tech Logo" width="32" height="32" />
     <span>Cliff-De-Tech</span>
   </a>
   <ul>
@@ -38,8 +39,6 @@
   </div>
   <button class="menu-btn" aria-label="Open menu">&#9776;</button>
 </nav>
-<!-- ====== HERO ====== -->
-<!-- ...existing code... -->
 <header id="home" class="hero custom-hero reveal">
   <div class="hero-left">
     <span class="hero-badge">FREELANCE GRAPHIC DESIGNER &middot; UI/UX DESIGNER &middot; WEB DESIGNER &middot; <br> BACK-END DEVELOPER IN TRAINING</span>
@@ -63,17 +62,12 @@
   </div>
   <div class="hero-right">
     <div class="hero-image-bg">
-      <img src="assets/me.jpg" alt="Clifford Opoku–Sarkodie" class="hero-image" />
+      <img src="assets/me.webp" alt="Clifford Opoku–Sarkodie" class="hero-image" fetchpriority="high" />
       <div class="hero-dots hero-dots-left"></div>
       <div class="hero-dots hero-dots-right"></div>
     </div>
   </div>
 </header>
-<!-- ...existing code... -->
-
-<!-- ====== PORTFOLIO ====== -->
-
-<!-- Lightbox -->
 <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Media preview">
   <div class="lightbox-content">
     <div class="lightbox-media" id="lightboxMedia"></div>
@@ -85,23 +79,56 @@
     <button class="icon-btn" id="closeLb" aria-label="Close">✕ Close</button>
   </div>
 </div>
-<!-- End Lightbox -->
-
-<!-- ====== VIDEO PLACEHOLDER ====== -->
 <section class="video-card reveal" style="margin: 64px auto 0 auto; max-width: 980px;">
   <div class="frame" style="aspect-ratio: 16/9; background: #181c22; display: flex; align-items: center; justify-content: center;">
-    <video controls poster="assets/wtch this video.png" style="width:100%; height:auto; border-radius:16px; background:#000;">
-      <source src="assets/Advert video.mp4" type="video/mp4">
+    <video controls poster="assets/wtch this video.webp" style="width:100%; height:auto; border-radius:16px; background:#000;">
+      <source src="assets/Advert video.webm" type="video/webm">
       Your browser does not support the video tag.
     </video>
   </div>
 </section>
 
-<!-- ====== FOOTER ====== -->
 <footer>
-  © <span id="year"></span> Cliff-De-Tech — All Rights Reserved.
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h3 class="footer-brand">Cliff-De-Tech</h3>
+      <p>A designer focused on creating user-centered digital experiences.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="portfolio.html">Projects</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Follow me</h4>
+      <ul>
+        <li><a href="https://github.com/cliff-de-tech" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/clifford-opoku-sarkodie-377505369/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/cliffdesignz/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://x.com/Owura_o8700" target="_blank" rel="noopener">X (Twitter)</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Sign up for updates</h4>
+      <p>Receive news and updates straight to your inbox.</p>
+      <form class="footer-subscribe" action="https://formspree.io/f/xdkldvbn" method="post">
+        <input class="input" type="email" name="email" placeholder="Email Address" required />
+        <button class="button" type="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© <span id="year"></span> Cliff-De-Tech — All Rights Reserved.</p>
+  </div>
 </footer>
-<!-- Link to your JS file -->
 <script src="JS/main.js"></script>
 <script>
   const video = document.querySelector('video');

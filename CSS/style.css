@@ -19,7 +19,7 @@ body.light-theme #contact .card {
   border-color: rgba(0,0,0,0.1);
 }
 /* ====== CSS RESET (modern, minimal) ====== */
-*{box-sizing:border-box}html,body{height:100%}body,h1,h2,h3,p,ul{margin:0}ul{padding:0;list-style:none}img,video{display:block;max-width:100%;height:auto}
+*{box-sizing:border-box}html{height:100%}body,h1,h2,h3,p,ul{margin:0}ul{padding:0;list-style:none}img,video{display:block;max-width:100%;height:auto}
 
 /* ====== THEME ====== */
 :root{
@@ -59,6 +59,9 @@ body{
   background: var(--bg);
   overflow-x:hidden;
   transition: background .3s, color .3s;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Animated background */
@@ -1194,10 +1197,7 @@ footer{padding:44px 24px; color:var(--muted); text-align:center}
   .about{grid-template-columns: 1fr; align-items:start}
   .nav ul{display:none}
   .nav .menu-btn{display:grid; place-items:center; width:42px; height:42px; border-radius:10px; background:var(--glass); border:1px solid rgba(255,255,255,.16); color:var(--text)}
-  .mobile-menu{position:fixed; inset:var(--nav-h) 10px auto 10px; background:rgba(12,14,20,.96); border:1px solid rgba(255,255,255,.14); border-radius:14px; display:none; z-index:12; padding:12px}
-  .mobile-menu.open{display:block; animation:fadeIn .18s}
-  .mobile-menu a{display:block; padding:14px 12px; color:var(--muted); text-decoration:none; border-radius:10px}
-  .mobile-menu a:hover{background:var(--glass); color:var(--text)}
+  /* .mobile-menu styles were here, but are now removed */
 }
 
 @media (min-width: 901px) {
@@ -1316,91 +1316,9 @@ body.light-theme .portfolio-item:hover {
   *{animation:none !important; transition:none !important}
 }
 
-/* WhatsApp button styles - REMOVE CIRCLE, INCREASE SIZE */
-#whatsappBtn {
-  position: fixed;
-  left: 28px;
-  bottom: 32px;
-  z-index: 120;
-  background: transparent; /* Remove glass background */
-  border: none;            /* Remove border */
-  border-radius: 0;        /* Remove circle */
-  width: auto;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: none;        /* Remove shadow */
-  transition: transform 0.18s, opacity 0.18s;
-  outline: none;
-  opacity: 0;
-  pointer-events: none;
-}
+/* WhatsApp button styles - REMOVED */
+/* scrollTopBtn styles - REMOVED */
 
-#whatsappBtn svg {
-  width: 54px;   /* Increase icon size */
-  height: 54px;
-  transition: transform 0.18s;
-}
-
-#whatsappBtn.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-#whatsappBtn:hover {
-  transform: translateY(-4px); /* Lift on hover */
-}
-#whatsappBtn:focus svg {
-  transform: scale(1.15) translateY(-4px); /* Enlarge and lift on hover */
-}
-
-/* Scroll-to-top button styles */
-#scrollTopBtn {
-  position: fixed;
-  right: 28px;
-  bottom: 32px;
-  z-index: 120;
-  background: var(--glass);
-  color: var(--accent);
-  border: 2.5px solid var(--accent-2);
-  border-radius: 50%; /* Makes it a perfect circle */
-  width: 62px;
-  height: 62px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  font-family: "Space Grotesk", system-ui;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 4px 18px rgba(123,220,255,0.18);
-  transition: background 0.18s, color 0.18s, border-color 0.18s, transform 0.18s;
-  outline: none;
-  opacity: 0;
-  pointer-events: none;
-}
-
-#scrollTopBtn.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-#scrollTopBtn:hover,
-#scrollTopBtn:focus {
-  background: linear-gradient(90deg, rgba(123,220,255,.28), rgba(155,123,255,.28));
-  color: var(--text);
-  border-color: var(--accent);
-  transform: translateY(-4px) scale(1.08);
-  box-shadow: 0 8px 32px rgba(123,220,255,0.28);
-}
-
-body.light-theme #scrollTopBtn {
-    background: var(--glass);
-    color: var(--accent);
-    border: 2.5px solid var(--accent-2);
-    box-shadow: 0 4px 18px rgba(0,0,0,0.15);
-}
 /* ====== NEW: PORTFOLIO CATEGORY CARDS ====== */
 .portfolio-categories {
   display: flex;
@@ -1534,4 +1452,122 @@ body.light-theme .portfolio-category-card:hover {
   display: flex !important;
   opacity: 1 !important;
   visibility: visible !important;
+}
+body.light-theme .video-card .frame {
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,.06) 0 8px, transparent 8px 16px);
+}
+
+/* ====== NEW FOOTER STYLES ====== */
+
+footer {
+  margin-top: 50px; /* <-- This is the new line */
+  background: var(--glass);
+  border-top: 1px solid var(--glass-2);
+  padding: 50px clamp(18px, 6vw, 56px) 30px;
+  color: var(--muted);
+  text-align: left;
+}
+
+body.light-theme footer {
+  background: rgba(0,0,0,0.03);
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 36px;
+  margin-bottom: 40px;
+}
+
+.footer-col h3,
+.footer-col h4 {
+  font-family: "Space Grotesk", system-ui;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.footer-col h3.footer-brand {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+.footer-col p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 300px;
+}
+
+.footer-col h4 {
+  font-size: 1.25rem;
+}
+
+.footer-col ul {
+  display: grid;
+  gap: 10px;
+}
+
+.footer-col ul a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.footer-col ul a:hover {
+  color: var(--accent);
+}
+
+.footer-subscribe {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* Use the theme's main button style, now with animation */
+.footer-subscribe .button {
+  background: linear-gradient(90deg, #7bdcff 10%, #9b7bff 90%);
+  color: #fff;
+  border-color: transparent;
+  width: 100%;
+  /* Added transition */
+  transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+/* Added hover effect for dark mode */
+.footer-subscribe .button:hover {
+  background: linear-gradient(90deg, #9b7bff 10%, #7bdcff 90%); /* Reversed gradient */
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 24px rgba(123,220,255,0.18);
+}
+
+body.light-theme .footer-subscribe .button {
+  background: linear-gradient(90deg, var(--accent) 10%, var(--accent-2) 90%);
+  color: #fff;
+}
+
+/* Added hover effect for light mode */
+body.light-theme .footer-subscribe .button:hover {
+  background: linear-gradient(90deg, var(--accent-2) 10%, var(--accent) 90%); /* Reversed gradient */
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 24px rgba(0,123,255,0.18); /* Light theme shadow */
+}
+
+/* Responsive stacking for mobile */
+@media (max-width: 600px) {
+  .footer-grid {
+    text-align: center;
+  }
+  .footer-col p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .footer-col ul {
+    display: inline-grid; /* Keeps list items centered */
+    text-align: center;
+  }
+  .footer-bottom {
+    text-align: center;
+  }
 }
