@@ -18,6 +18,7 @@ body.light-theme #contact .card {
   background: linear-gradient(135deg, rgba(0,123,255,0.08) 0%, rgba(88,59,255,0.08) 100%);
   border-color: rgba(0,0,0,0.1);
 }
+
 /* ====== CSS RESET (modern, minimal) ====== */
 *{box-sizing:border-box}html{height:100%}body,h1,h2,h3,p,ul{margin:0}ul{padding:0;list-style:none}img,video{display:block;max-width:100%;height:auto}
 
@@ -50,7 +51,6 @@ body.light-theme {
   --shadow: 0 10px 30px rgba(0, 0, 0, .1);
 }
 
-
 /* Base */
 html{scroll-behavior:smooth}
 body{
@@ -68,12 +68,10 @@ body{
 #bg-canvas{
   position:fixed; inset:0; width:100%; height:100%;
   z-index:-2;
-  /* Dark mode specific gradient */
   background: radial-gradient(1200px 800px at 10% 10%, #0b1020 0%, #07080f 60%, #05060a 100%);
 }
 
 body.light-theme #bg-canvas {
-    /* Light mode background, can be subtle or different */
     background: radial-gradient(1200px 800px at 10% 10%, #eef4f8 0%, #e6ecf0 60%, #dfe5e9 100%);
 }
 
@@ -103,10 +101,24 @@ body.light-theme .bg-overlay-gradient {
 
 /* ====== NAV ====== */
 @media (max-width: 700px) {
-  .nav {
-    position: relative;
-    z-index: 100;
-  }
+  .nav .nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-lg);
+  z-index: 1000;
+  width: calc(100% - 40px);
+  max-width: var(--max-width);
+  box-shadow: var(--shadow-lg);
+}
   .nav ul {
     display: none;
     flex-direction: column;
@@ -185,16 +197,16 @@ body.light-theme .bg-overlay-gradient {
   }
 }
 .nav{
-  position: fixed; /* changed from sticky */
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;     /* ensure full width */
+  width: 100%;
   height: var(--nav-h);
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 clamp(16px, 4vw, 40px);
   background: linear-gradient(to bottom, rgba(8,9,12,.85), rgba(8,9,12,0));
   backdrop-filter: blur(8px);
-  z-index: 100;    /* higher z-index */
+  z-index: 100;
   box-shadow: 0 2px 18px rgba(123,220,255,.08);
   transition: background .2s;
 }
@@ -204,6 +216,7 @@ body.light-theme .nav {
 }
 body {
   padding-top: var(--nav-h);
+  margin: 0;
 }
 .brand{
   display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text);
@@ -259,7 +272,7 @@ body.light-theme .theme-toggle {
   .theme-toggle {
     position: absolute;
     top: 12px;
-    right: 80px; /* Position it next to the menu button */
+    right: 80px; 
     z-index: 101;
     background: rgba(30,60,100,0.7);
     border: 2px solid #7bdcff;
@@ -275,7 +288,6 @@ body.light-theme .theme-toggle {
 }
 
 /* ====== HERO ====== */
-/* Custom Hero Layout */
 .hero-socials {
   display: flex;
   gap: 32px;
@@ -303,7 +315,6 @@ body.light-theme .hero-socials a {
   box-shadow: 0 2px 12px rgba(0,123,255,0.10);
 }
 
-
 .hero-socials a:hover {
   background: linear-gradient(135deg, #7bdcff 0%, #9b7bff 100%);
   color: #fff;
@@ -321,7 +332,7 @@ body.light-theme .hero-socials a:hover {
   width: 100vw;
   box-sizing: border-box;
   padding: 64px 5vw 48px 5vw;
-  background: transparent; /* Keeps your animated background visible */
+  background: transparent;
   position: relative;
   z-index: 1;
 }
@@ -361,7 +372,6 @@ body.light-theme .hero-intro {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-weight: 800;
   margin: 0 0 24px 0;
   font-family: 'Space Grotesk', 'Inter', Arial, sans-serif;
 }
@@ -497,7 +507,6 @@ body.light-theme .hero-dots-right {
      background: repeating-linear-gradient( to bottom, var(--accent-2) 0 8px, transparent 8px 16px );
 }
 
-/* Responsive adjustments */
 @media (max-width: 900px) {
   .custom-hero {
     flex-direction: column;
@@ -566,6 +575,7 @@ body.light-theme .video-card .play {
 section{
   padding: clamp(60px, 10vw, 120px) clamp(18px, 6vw, 56px);
   position:relative;
+  margin: 0;
 }
 .section-title{
   font-family:"Space Grotesk", system-ui; font-size: clamp(28px, 3.8vw, 46px);
@@ -573,7 +583,6 @@ section{
 }
 .section-desc{color:var(--muted); max-width:800px; margin-bottom:28px}
 
-/* About Sections - Theme Fit, Max Width, Glassy Cards, Animated Buttons */
 .about-sections {
   margin: 48px 0 0 0;
   background: none;
@@ -626,14 +635,6 @@ body.light-theme .section-title {
   transition: box-shadow 0.2s, transform 0.2s;
 }
 .about-card:hover {
-/* Match about-card:hover for skills cards */
-.professional-skills-card:hover {
-  box-shadow: 0 12px 32px rgba(123,220,255,0.18);
-  transform: translateY(-4px) scale(1.015);
-}
-body.light-theme .professional-skills-card:hover {
-  box-shadow: 0 12px 32px rgba(0,123,255,0.12);
-}
   box-shadow: 0 12px 32px rgba(123,220,255,0.18);
   transform: translateY(-4px) scale(1.015);
 }
@@ -690,7 +691,6 @@ body.light-theme .about-card-left em {
 body.light-theme .about-card-right, body.light-theme .about-card h3, body.light-theme .about-card h2, body.light-theme .about-card li  {
     color: var(--text);
 }
-
 
 .about-experience-header {
   width: 100%;
@@ -792,34 +792,10 @@ body.light-theme .about .card {
 .about .profile:hover{transform: translateY(-4px); box-shadow: 0 12px 40px rgba(123,220,255,.25)}
 .about .profile{
   border-radius: var(--radius); overflow:hidden; border:1px solid rgba(8, 4, 50, 0.12);
-  transform: translateZ(0); /* enable GPU */
+  transform: translateZ(0);
 }
 
-/* Portfolio grid */
-.grid{
-  --size: 320px;
-  display:grid; grid-template-columns: repeat(auto-fill, minmax(min(var(--size), 100%), 1fr));
-  gap: 18px;
-}
-.tile:hover{transform: translateY(-4px); box-shadow: 0 12px 40px rgba(123,220,255,.25)}
-.tile{
-  position:relative; border-radius: var(--radius-sm); overflow:hidden;
-  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-  border:1px solid rgba(255,255,255,.12);
-  cursor:pointer; isolation:isolate; transform: translateZ(0);
-}
-.tile img{width:100%; height:240px; object-fit:cover; transition: transform .6s ease}
-.tile:hover img{transform:scale(1.06)}
-.tile .meta{
-  position:absolute; inset:auto 10px 10px 10px;
-  display:flex; align-items:center; justify-content:space-between; gap:10px;
-  background: rgba(0,0,0,.45); padding:10px 12px; border-radius:12px;
-  color:var(--text); border:1px solid rgba(255,255,255,.12);
-  backdrop-filter: blur(6px)
-}
-.badge{
-  font-size:12px; color:var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:.6px
-}
+
 
 /* Lightbox */
 .lightbox{
@@ -862,7 +838,6 @@ body.light-theme .icon-btn:hover {
 }
 
 /* Services */
-/* ====== FLOAT ANIMATION ====== */
 @keyframes floatY {
   0%   { transform: translateY(0); }
   50%  { transform: translateY(-18px); }
@@ -872,7 +847,6 @@ body.light-theme .icon-btn:hover {
   animation: floatY 3.8s ease-in-out infinite;
 }
 
-/* ====== SERVICES TABS ====== */
 .tabs {
   display: flex;
   gap: 12px;
@@ -915,7 +889,6 @@ body.light-theme .tab-btn.active {
     background: linear-gradient(90deg, rgba(0,123,255,.18), rgba(88,59,255,.18));
 }
 
-/* Responsive for mobile */
 @media (max-width: 600px) {
   .tabs {
     flex-wrap: wrap;
@@ -1141,9 +1114,7 @@ body.light-theme .tool-item {
     height: 24px;
 }
 
-
 /* Contact */
-/* Center the contact section */
 #contact {
   display: flex;
   flex-direction: column;
@@ -1197,7 +1168,6 @@ footer{padding:44px 24px; color:var(--muted); text-align:center}
   .about{grid-template-columns: 1fr; align-items:start}
   .nav ul{display:none}
   .nav .menu-btn{display:grid; place-items:center; width:42px; height:42px; border-radius:10px; background:var(--glass); border:1px solid rgba(255,255,255,.16); color:var(--text)}
-  /* .mobile-menu styles were here, but are now removed */
 }
 
 @media (min-width: 901px) {
@@ -1206,120 +1176,16 @@ footer{padding:44px 24px; color:var(--muted); text-align:center}
     }
 }
 
-/* ====== NEW PORTFOLIO STYLES ====== */
-.grid {
-    display: none; /* Hide old grid */
-}
+/* ====== PORTFOLIO STYLES ====== */
 
-.portfolio-grid {
-  padding: 0 2em;
-  column-count: 3;
-  column-gap: 2em;
-}
 
-.portfolio-item {
-  display: inline-block;
-  margin: 0 0 2em;
-  width: 100%;
-  cursor: pointer;
-  border: 2px solid transparent;
-  border-radius: 8px;
-  transition: border-color 0.3s ease;
-  background-color: var(--glass-2);
-  overflow: hidden;
-}
-
-.portfolio-item:hover {
-  border-color: var(--accent);
-}
-
-.portfolio-figure {
-  position: relative;
-  overflow: hidden;
-}
-
-.portfolio-figure img {
-  width: 100%;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.portfolio-item:hover .portfolio-figure img {
-  transform: scale(1.05);
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.portfolio-item:hover .overlay {
-  opacity: 1;
-}
-
-.view-project-text {
-  color: #fff;
-  font-weight: 600;
-  font-size: 1.2rem;
-  font-family: "Space Grotesk", system-ui;
-}
-
-.portfolio-meta {
-  padding: 12px 16px;
-}
-
-.portfolio-title {
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--text);
-  display: block;
-}
-
-.portfolio-badge {
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-
-/* Light theme adjustments */
-body.light-theme .portfolio-item {
-    background-color: #fff;
-    border: 2px solid rgba(0,0,0,0.1);
-}
-body.light-theme .portfolio-item:hover {
-  border-color: var(--accent-2);
-}
-
-/* Responsive columns */
-@media (max-width: 1024px) {
-  .portfolio-grid {
-    column-count: 2;
-  }
-}
-
-@media (max-width: 768px) {
-  .portfolio-grid {
-    column-count: 1;
-  }
-}
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   *{animation:none !important; transition:none !important}
 }
 
-/* WhatsApp button styles - REMOVED */
-/* scrollTopBtn styles - REMOVED */
-
-/* ====== NEW: PORTFOLIO CATEGORY CARDS ====== */
+/* ====== PORTFOLIO CATEGORY CARDS ====== */
 .portfolio-categories {
   display: flex;
   flex-direction: column;
@@ -1394,16 +1260,10 @@ body.light-theme .portfolio-category-card:hover {
   transform: scale(1.08);
 }
 
-/* Make the grid appear when needed */
-.portfolio-grid {
-    display: block; /* Overwrite display:none on old .grid */
-    column-count: 3; /* Restore column count */
-}
-
 /* Responsive stacking for category cards */
 @media (max-width: 768px) {
   .portfolio-category-card {
-    flex-direction: column-reverse; /* Puts image on top */
+    flex-direction: column-reverse;
     align-items: stretch;
     text-align: center;
   }
@@ -1412,15 +1272,13 @@ body.light-theme .portfolio-category-card:hover {
     width: 100%;
     height: 180px;
   }
-  .portfolio-grid {
-    column-count: 2;
-  }
 }
 
-@media (max-width: 500px) {
-    .portfolio-grid {
-        column-count: 1;
-    }
+/* Hide desktop-only images on mobile */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
 }
 @media (max-width: 480px) {
   .portfolio-category-card {
@@ -1453,19 +1311,17 @@ body.light-theme .portfolio-category-card:hover {
   opacity: 1 !important;
   visibility: visible !important;
 }
-body.light-theme .video-card .frame {
-    background: repeating-linear-gradient(45deg, rgba(255,255,255,.06) 0 8px, transparent 8px 16px);
-}
 
-/* ====== NEW FOOTER STYLES ====== */
+/* ====== FOOTER STYLES ====== */
 
 footer {
-  margin-top: 50px; /* <-- This is the new line */
+  margin-top: auto;
   background: var(--glass);
   border-top: 1px solid var(--glass-2);
-  padding: 50px clamp(18px, 6vw, 56px) 30px;
+  padding: 50px 0 30px 0;
   color: var(--muted);
   text-align: left;
+  width: 100%;
 }
 
 body.light-theme footer {
@@ -1478,6 +1334,7 @@ body.light-theme footer {
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 36px;
   margin-bottom: 40px;
+  padding: 0 clamp(18px, 6vw, 56px);
 }
 
 .footer-col h3,
@@ -1524,19 +1381,16 @@ body.light-theme footer {
   margin-top: 12px;
 }
 
-/* Use the theme's main button style, now with animation */
 .footer-subscribe .button {
   background: linear-gradient(90deg, #7bdcff 10%, #9b7bff 90%);
   color: #fff;
   border-color: transparent;
   width: 100%;
-  /* Added transition */
   transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
-/* Added hover effect for dark mode */
 .footer-subscribe .button:hover {
-  background: linear-gradient(90deg, #9b7bff 10%, #7bdcff 90%); /* Reversed gradient */
+  background: linear-gradient(90deg, #9b7bff 10%, #7bdcff 90%);
   color: #fff;
   transform: translateY(-2px) scale(1.04);
   box-shadow: 0 6px 24px rgba(123,220,255,0.18);
@@ -1547,14 +1401,12 @@ body.light-theme .footer-subscribe .button {
   color: #fff;
 }
 
-/* Added hover effect for light mode */
 body.light-theme .footer-subscribe .button:hover {
-  background: linear-gradient(90deg, var(--accent-2) 10%, var(--accent) 90%); /* Reversed gradient */
+  background: linear-gradient(90deg, var(--accent-2) 10%, var(--accent) 90%);
   transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 6px 24px rgba(0,123,255,0.18); /* Light theme shadow */
+  box-shadow: 0 6px 24px rgba(0,123,255,0.18);
 }
 
-/* Responsive stacking for mobile */
 @media (max-width: 600px) {
   .footer-grid {
     text-align: center;
@@ -1564,10 +1416,78 @@ body.light-theme .footer-subscribe .button:hover {
     margin-right: auto;
   }
   .footer-col ul {
-    display: inline-grid; /* Keeps list items centered */
+    display: inline-grid;
     text-align: center;
   }
   .footer-bottom {
-    text-align: center;
-  }
+  text-align: center;
+  padding: 20px clamp(18px, 6vw, 56px);
+  border-top: 1px solid var(--glass-2);
+  margin-top: 20px;
 }
+}
+
+/* ====== GRAPHIC DESIGN VERTICAL LAYOUT ====== */
+.graphic-vertical-layout {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.graphic-vertical-layout img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.graphic-vertical-layout img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(123,220,255,0.15);
+}
+
+body.light-theme .graphic-vertical-layout img {
+  border-color: rgba(0,0,0,0.1);
+}
+
+body.light-theme .graphic-vertical-layout img:hover {
+  box-shadow: 0 8px 24px rgba(0,123,255,0.12);
+}
+
+/* ====== UI/UX DESIGN VERTICAL LAYOUT ====== */
+.uiux-vertical-layout {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.uiux-vertical-layout img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.uiux-vertical-layout img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(123,220,255,0.15);
+}
+
+body.light-theme .uiux-vertical-layout img {
+  border-color: rgba(0,0,0,0.1);
+}
+
+body.light-theme .uiux-vertical-layout img:hover {
+  box-shadow: 0 8px 24px rgba(0,123,255,0.12);
+}
+

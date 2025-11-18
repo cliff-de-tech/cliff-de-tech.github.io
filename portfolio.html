@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="CSS/web-category.css">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' media="print" onload="this.media='all'">
@@ -11,7 +12,7 @@
   <meta name="google-site-verification" content="UxjWMFhIU8iz2KEHdoypfxotkE1lo-xSWkkKhqYYpBE" />
   <meta name="description" content="Browse the graphic design, UI/UX, and web design projects by Clifford Opoku-Sarkodie. View brand identities, mobile app mockups, and website designs." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -27,8 +28,8 @@
     <ul>
       <li><a href="index.html" class="nav-link">Home</a></li>
       <li><a href="about.html" class="nav-link">About</a></li>
-      <li><a href="portfolio.html" class="nav-link active">Projects</a></li>
       <li><a href="skills.html" class="nav-link">Skills</a></li>
+      <li><a href="portfolio.html" class="nav-link active">My Projects</a></li>
       <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -70,62 +71,66 @@
             </div>
         </div>
     </div>
+    
     <div class="project-grid-wrapper" id="projectGridWrapper" style="display: none;">
         <button class="button" id="backToCategoriesBtn" style="margin-bottom: 32px;">&larr; Back to Categories</button>
         <div class="portfolio-grid" id="portfolioGrid">
             
-            <div class="portfolio-item tile reveal" data-category="uiux" data-type="image" data-src="assets/Home Page.webp" data-title="NextGen Innovators - Art Marketplace" data-description="Website UI.">
-              <figure class="portfolio-figure">
-                <img src="assets/home page 2.webp" alt="NextGen Innovators Art Marketplace Website UI" />
-                <div class="overlay"><span class="view-project-text">View Project</span></div>
-              </figure>
-              <div class="portfolio-meta"><span class="portfolio-title">Art Marketplace UI/UX</span><span class="portfolio-badge">UI/UX</span></div>
+            <div class="uiux-vertical-layout" data-category="uiux" style="display: none;">
+              <img src="assets/UI_UX Design/SellerSignUpPage.webp" alt="Seller Sign Up Page" data-type="image" data-src="assets/UI_UX Design/SellerSignUpPage.webp" data-title="Seller Sign Up Page" data-description="Vendor registration interface design" data-priority="1">
+              <img src="assets/UI_UX Design/ios mockup.webp" alt="iOS Mockup" data-type="image" data-src="assets/UI_UX Design/ios mockup.webp" data-title="iOS Mockup" data-description="Mobile app UI mockup design" data-priority="2">
+              <img src="assets/UI_UX Design/Buyer Dashboard.webp" alt="Buyer Dashboard" data-type="image" data-src="assets/UI_UX Design/Buyer Dashboard.webp" data-title="Buyer Dashboard" data-description="E-commerce buyer dashboard UI design" data-priority="3">
+              <img src="assets/UI_UX Design/Learner Dashboard.webp" alt="Learner Dashboard" data-type="image" data-src="assets/UI_UX Design/Learner Dashboard.webp" data-title="Learner Dashboard" data-description="Educational platform dashboard UI" data-priority="4">
+              <img src="assets/UI_UX Design/Seller Dashboard.webp" alt="Seller Dashboard" data-type="image" data-src="assets/UI_UX Design/Seller Dashboard.webp" data-title="Seller Dashboard" data-description="E-commerce seller dashboard UI" data-priority="5">
+              <img src="assets/UI_UX Design/home page 2.webp" alt="Home Page Design" data-type="image" data-src="assets/UI_UX Design/home page 2.webp" data-title="Home Page Design" data-description="Website homepage UI design" data-priority="6">
+              <img src="assets/UI_UX Design/Buyer sign up page.webp" alt="Buyer Sign Up Page" data-type="image" data-src="assets/UI_UX Design/Buyer sign up page.webp" data-title="Buyer Sign Up Page" data-description="User registration interface design" data-priority="7" class="desktop-only">
+              <img src="assets/UI_UX Design/Home Page.webp" alt="Home Page" data-type="image" data-src="assets/UI_UX Design/Home Page.webp" data-title="Home Page" data-description="Website homepage interface" data-priority="8" class="desktop-only">
+              <img src="assets/UI_UX Design/Learner sign up page.webp" alt="Learner Sign Up Page" data-type="image" data-src="assets/UI_UX Design/Learner sign up page.webp" data-title="Learner Sign Up Page" data-description="Student registration interface" data-priority="9" class="desktop-only">
             </div>
 
-            <div class="portfolio-item tile reveal" data-category="graphic" data-type="image" data-src="assets/CDTS 2.webp" data-title="My Flyer" data-description="Flyer Design">
-              <figure class="portfolio-figure">
-                <img src="assets/CDTS 2.webp" alt="Cliff-De-Tech Services Business Card Design" />
-                <div class="overlay"><span class="view-project-text">View Project</span></div>
-              </figure>
-              <div class="portfolio-meta"><span class="portfolio-title">Personal Flyer</span><span class="portfolio-badge">Flyer</span></div>
+            <div class="graphic-vertical-layout" data-category="graphic" style="display: none;">
+              <img src="assets/Graphic Design/Marketing & Advertising Materials/Neon green Modern Creative Agency Instagram Post.webp" alt="Creative Agency Post" data-type="image" data-src="assets/Graphic Design/Marketing & Advertising Materials/Neon green Modern Creative Agency Instagram Post.webp" data-title="Creative Agency Post" data-description="Neon green creative agency design" data-priority="1">
+              <img src="assets/Graphic Design/Brand Identity/cliff-logo-691961532c84e.webp" alt="Cliff Logo Alt" data-type="image" data-src="assets/Graphic Design/Brand Identity/cliff-logo-691961532c84e.webp" data-title="Cliff Logo Alt" data-description="Personal brand logo design" data-priority="2">
+              <img src="assets/pd.webp" alt="PD Design" data-type="image" data-src="assets/pd.webp" data-title="PD Design" data-description="Professional design work" data-priority="3">
+              <img src="assets/Graphic Design/Brand Identity/film-co-logo-691961565715f.webp" alt="Film Co Logo" data-type="image" data-src="assets/Graphic Design/Brand Identity/film-co-logo-691961565715f.webp" data-title="Film Co Logo" data-description="Film company brand logo" data-priority="4">
+              <img src="assets/Graphic Design/Brand Identity/mackwill-logo-2-691962786007f.webp" alt="Mackwill Logo" data-type="image" data-src="assets/Graphic Design/Brand Identity/mackwill-logo-2-691962786007f.webp" data-title="Mackwill Logo" data-description="Brand identity design" data-priority="5">
+              <img src="assets/Graphic Design/Brand Identity/my-photos-logo-69196279535fc.webp" alt="Photo Company Logo" data-type="image" data-src="assets/Graphic Design/Brand Identity/my-photos-logo-69196279535fc.webp" data-title="Film Company Logo" data-description="" data-priority="6">
+              <img src="assets/Graphic Design/Marketing & Advertising Materials/Black and Orange Simple Grow your business Instagram Post.webp" alt="Business Growth Post" data-type="image" data-src="assets/Graphic Design/Marketing & Advertising Materials/Black and Orange Simple Grow your business Instagram Post.webp" data-title="Business Growth Post" data-description="Instagram marketing post" data-priority="7">
+              <img src="assets/Graphic Design/Marketing & Advertising Materials/Cliff_Burger_1.webp" alt="Cliff Burger Design" data-type="image" data-src="assets/Graphic Design/Marketing & Advertising Materials/Cliff_Burger_1.webp" data-title="Cliff Burger Design" data-description="Restaurant marketing material" data-priority="8">
+              <img src="assets/Graphic Design/Marketing & Advertising Materials/Modern & Minimal Digital Marketing Agency Instagram Post.webp" alt="Digital Marketing Post" data-type="image" data-src="assets/Graphic Design/Marketing & Advertising Materials/Modern & Minimal Digital Marketing Agency Instagram Post.webp" data-title="Digital Marketing Post" data-description="Modern minimal Instagram post design" data-priority="9">
+              <img src="assets/Graphic Design/Marketing & Advertising Materials/Purple Gradient 3D Modern Social Media Marketing Agency Instagram Post.webp" alt="Social Media Post" data-type="image" data-src="assets/Graphic Design/Marketing & Advertising Materials/Purple Gradient 3D Modern Social Media Marketing Agency Instagram Post.webp" data-title="Social Media Marketing Post" data-description="3D gradient social media design" data-priority="10">
+              <img src="assets/Graphic Design/Brand Identity/bro-code-logo-69196151cf916.webp" alt="Bro Code Logo Alt" data-type="image" data-src="assets/Graphic Design/Brand Identity/bro-code-logo-69196151cf916.webp" data-title="Bro Code Logo Alt" data-description="Brand identity design" data-priority="11" class="desktop-only">
+              <img src="assets/Graphic Design/Brand Identity/creative-technology-logo-2-69196155310c7.webp" alt="Creative Technology Logo 2" data-type="image" data-src="assets/Graphic Design/Brand Identity/creative-technology-logo-2-69196155310c7.webp" data-title="Creative Technology Logo 2" data-description="Technology company brand identity" data-priority="12" class="desktop-only">
+              <img src="assets/Graphic Design/Marketing & Advertising Materials/Vici Bday Flyer.webp" alt="Vici Birthday Flyer" data-type="image" data-src="assets/Graphic Design/Marketing & Advertising Materials/Vici Bday Flyer.webp" data-title="Vici Birthday Flyer" data-description="Birthday celebration flyer" data-priority="13" class="desktop-only">
+              <img src="assets/Graphic Design/Marketing & Advertising Materials/CDTS.webp" alt="CDTS Marketing Material" data-type="image" data-src="assets/Graphic Design/Marketing & Advertising Materials/CDTS.webp" data-title="CDTS Marketing Material" data-description="Marketing design for CDTS" data-priority="14" class="desktop-only">
+              <img src="assets/Graphic Design/Marketing & Advertising Materials/zest.webp" alt="Zest Design" data-type="image" data-src="assets/Graphic Design/Marketing & Advertising Materials/zest.webp" data-title="Zest Design" data-description="Zest brand packaging design" data-priority="15" class="desktop-only">
             </div>
 
-            <div class="portfolio-item tile reveal" data-category="graphic" data-type="image" data-src="assets/nextGen logo 2.webp" data-title="Catalyst Collective - Logo" data-description="Brand logo design.">
-              <figure class="portfolio-figure">
-                <img src="assets/nextGen logo 2.webp" alt="NextGen Innovators Brand Logo Design" />
-                <div class="overlay"><span class="view-project-text">View Project</span></div>
-              </figure>
-              <div class="portfolio-meta"><span class="portfolio-title">Brand Logo</span><span class="portfolio-badge">Logo</span></div>
+            <div class="web-vertical-layout" data-category="web" style="display: none;">
+              <div class="web-item">
+                <div class="img-hover-scroll">
+                  <img src="assets/Web Design/deroyals.webp" alt="Deroyals Website" class="scroll-image" data-src="assets/Web Design/deroyals.webp" data-title="Deroyals Website" data-description="Web Design" data-priority="1">
+                  <div class="portfolio-overlay">
+                    <h5 class="portfolio-title">Deroyals Website</h5>
+                    <p class="portfolio-category">Web Design</p>
+                    <a href="https://deroyals.netlify.app/" target="_blank" class="btn btn-sm btn-light">View</a>
+                  </div>
+                </div>
+              </div>
+              <div class="web-item">
+                <div class="img-hover-scroll">
+                  <img src="assets/Web Design/novatech.webp" alt="Novatech Website" class="scroll-image" data-src="assets/Web Design/novatech.webp" data-title="Novatech Website" data-description="Web Design" data-priority="2">
+                  <div class="portfolio-overlay">
+                    <h5 class="portfolio-title">Novatech Website</h5>
+                    <p class="portfolio-category">Web Design</p>
+                    <a href="https://novatechsystems.netlify.app/" target="_blank" class="btn btn-sm btn-light">View</a>
+                  </div>
+                </div>
+              </div>
             </div>
-
-            <div class="portfolio-item tile reveal" data-category="web" data-type="image" data-src="assets/dashboard.webp" data-title="Dashboard UI Concept" data-description="Dashboard.">
-              <figure class="portfolio-figure">
-                <img src="assets/dashboard.webp" alt="Admin Dashboard UI Concept" />
-                <div class="overlay"><span class="view-project-text">View Project</span></div>
-              </figure>
-              <div class="portfolio-meta"><span class="portfolio-title">Web Designs</span><span class="portfolio-badge">Coming Soon...</span></div>
-            </div>
-
-            <div class="portfolio-item tile reveal" data-category="graphic" data-type="image" data-src="assets/zest 2.webp" data-title="Zest - Brand Package" data-description="Zest Juice Packaging Design">
-              <figure class="portfolio-figure">
-                <img src="assets/zest.webp" alt="Zest Juice Brand Packaging Design" />
-                <div class="overlay"><span class="view-project-text">View Project</span></div>
-              </figure>
-              <div class="portfolio-meta"><span class="portfolio-title">Brand Package</span><span class="portfolio-badge">Packaging</span></div>
-            </div>
-
-            <div class="portfolio-item tile reveal" data-category="uiux" data-type="image" data-images="assets/Seller Dashboard.webp,assets/Learner Dashboard.webp,assets/Buyer Dashboard.webp" data-title="Mobile App UI" data-description="A collection of mobile app UI designs.">
-              <figure class="portfolio-figure">
-                <img src="assets/ios mockup.webp" alt="Mobile App UI Screens Mockup" />
-                <div class="overlay"><span class="view-project-text">View Project</span></div>
-              </figure>
-              <div class="portfolio-meta"><span class="portfolio-title">Mobile App UI</span><span class="portfolio-badge">UI/UX</span></div>
-            </div>
-            
-            </div>
+        </div>
     </div>
-
-</div>
+</section>
 
 <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Media preview">
   <div class="lightbox-content">
@@ -180,6 +185,9 @@
     <p>© <span id="year"></span> Cliff-De-Tech — All Rights Reserved.</p>
   </div>
 </footer>
+
 <script src="JS/main.js"></script>
+<script src="JS/web-category.js"></script>
+<script src="JS/web-scroll.js"></script>
 </body>
 </html>

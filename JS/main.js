@@ -2,7 +2,6 @@
 const $ = (sel, ctx=document) => ctx.querySelector(sel);
 const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
 
-// filepath: c:\Users\cliff\Desktop\My Website\JS\main.js
 document.addEventListener('DOMContentLoaded', function() {
   const menuBtn = document.querySelector('.menu-btn');
   const navUl = document.querySelector('.nav ul');
@@ -32,18 +31,15 @@ document.addEventListener('DOMContentLoaded', function() {
 /* ====== NAV: smooth active link ====== */
 (function navEnhance(){
   const links = $$('.nav-link');
-  // Correctly create sections array from links, filtering out nulls for links that don't match an ID
   const sections = links.map(a => {
     const href = a.getAttribute('href');
     try {
       return href.startsWith('#') ? $(href) : null;
     } catch (e) {
-      // Catch invalid selectors which can happen with full URLs
       return null;
     }
-  }).filter(Boolean); // remove nulls
+  }).filter(Boolean);
 
-  // active link on scroll
   if (sections.length > 0) {
     const obs = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{
@@ -53,8 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
           const current = links.find(a => a.getAttribute('href').endsWith(id));
           if(current) {
             current.classList.add('active');
-            // also reflect in mobile menu if open
-            $$('#mobileMenu a').forEach(a=>a.classList.toggle('active', a.getAttribute('href').endsWith(id)));
           }
         }
       });
@@ -85,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const v = $('#introVideo');
   if(!play || !v) return;
 
-  // Show play/pause text based on state
   function updateBtn() {
     if (v.paused) {
       play.style.display = 'inline-flex';
@@ -110,11 +103,10 @@ document.addEventListener('DOMContentLoaded', function() {
   v.addEventListener('pause', updateBtn);
   v.addEventListener('ended', updateBtn);
 
-  // Initialize button state
   updateBtn();
 })();
 
-// ====== SERVICES TABS FILTER ======
+/* ====== SERVICES TABS FILTER ====== */
 (function serviceTabs(){
   const tabBtns = document.querySelectorAll('.tab-btn');
   const cards = document.querySelectorAll('.service-card');
@@ -139,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
 /* ====== SERVICES: tiny tilt effect ====== */
 (function tiltCards(){
   const cards = $$('[data-tilt]');
-  const damp = 16;
+
   cards.forEach(card=>{
     let rect;
     const onMove = (e)=>{
@@ -160,35 +152,31 @@ document.addEventListener('DOMContentLoaded', function() {
 const yearEl = $('#year');
 if(yearEl) yearEl.textContent = new Date().getFullYear();
 
-/* ====== ANIMATED BACKGROUND CANVAS ======
-   Flowing particle field + dynamic connections.
-   GPU-friendly, throttled for hidden tabs and honors prefers-reduced-motion. */
+/* ====== ANIMATED BACKGROUND CANVAS ====== */
 (function animatedBg(){
   const canvas = document.getElementById('bg-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d', {alpha: true});
   let w, h, dpr, particles=[], mouse={x:null,y:null,active:false}, t=0, stopped=false;
-  const maxParticles = 140; // auto scales with size below
+  const maxParticles = 140;
   const connectDist = 120;
   
-  // Define color variables that can be updated
   let colorA, colorB, colorC, lineColor;
 
   const pr = window.matchMedia('(prefers-reduced-motion: reduce)');
   if(pr.matches){ stopped = true; return; }
 
-  // Function to set colors based on the current theme
   function updateColors() {
     const isLight = document.body.classList.contains('light-theme');
     if (isLight) {
-      colorA = [0,0,0]; // Black
-      colorB = [50,50,50]; // Dark Grey
-      colorC = [80,80,80]; // Lighter Grey
+      colorA = [0,0,0]; 
+      colorB = [50,50,50]; 
+      colorC = [80,80,80]; 
       lineColor = `rgba(0,0,0,`;
     } else {
-      colorA = [123,220,255]; // Original Blue
-      colorB = [155,123,255]; // Original Purple
-      colorC = [55,255,177];  // Original Green
+      colorA = [123,220,255]; 
+      colorB = [155,123,255]; 
+      colorC = [55,255,177]; 
       lineColor = `rgba(180,210,255,`;
     }
   }
@@ -199,7 +187,6 @@ if(yearEl) yearEl.textContent = new Date().getFullYear();
     h = canvas.height = innerHeight * dpr;
     canvas.style.width = innerWidth + 'px';
     canvas.style.height = innerHeight + 'px';
-    // initialize particles relative to viewport size
     const target = Math.min(maxParticles, Math.round((innerWidth*innerHeight)/18000));
     if(particles.length === 0){
       for(let i=0;i<target;i++) particles.push(new Particle());
@@ -225,11 +212,9 @@ if(yearEl) yearEl.textContent = new Date().getFullYear();
       }
     }
     update(){
-      // Simplex-like drift using sin/cos fields
       const ang = noise(this.x*.0008, this.y*.0008, t*.0003) * Math.PI*2;
       this.vx += Math.cos(ang)*.02;
       this.vy += Math.sin(ang)*.02;
-      // mouse influence
       if(mouse.active){
         const dx = this.x - mouse.x, dy = this.y - mouse.y;
         const dist2 = dx*dx + dy*dy;
@@ -239,10 +224,8 @@ if(yearEl) yearEl.textContent = new Date().getFullYear();
           this.vy += (dy) * f * .02;
         }
       }
-      // damping + move
       this.vx *= .985; this.vy *= .985;
       this.x += this.vx; this.y += this.vy;
-      // wrap
       if(this.x < 0) this.x += w; if(this.x > w) this.x -= w;
       if(this.y < 0) this.y += h; if(this.y > h) this.y -= h;
     }
@@ -253,9 +236,7 @@ if(yearEl) yearEl.textContent = new Date().getFullYear();
     }
   }
 
-  // Lightweight value noise
   function noise(x,y,z){
-    // hash-based pseudo noise
     const s = Math.sin(x*127.1 + y*311.7 + z*74.7) * 43758.5453;
     return s - Math.floor(s);
   }
@@ -282,7 +263,6 @@ if(yearEl) yearEl.textContent = new Date().getFullYear();
     if(stopped) return;
     t += 16;
     ctx.clearRect(0,0,w,h);
-    // faint vignette - only in dark mode
     if (!document.body.classList.contains('light-theme')) {
         const g = ctx.createRadialGradient(w*.8, h*.2, 0, w*.8, h*.2, Math.max(w,h)*.9);
         g.addColorStop(0, 'rgba(30,50,90,0.08)');
@@ -295,7 +275,6 @@ if(yearEl) yearEl.textContent = new Date().getFullYear();
     requestAnimationFrame(frame);
   }
 
-  // Interaction
   window.addEventListener('mousemove', (e)=>{
     const rect = canvas.getBoundingClientRect();
     mouse.x = (e.clientX - rect.left) * dpr;
@@ -310,7 +289,6 @@ if(yearEl) yearEl.textContent = new Date().getFullYear();
     if(!stopped) frame();
   });
 
-  // Observe theme changes
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.attributeName === "class") {
@@ -322,7 +300,6 @@ if(yearEl) yearEl.textContent = new Date().getFullYear();
 
   window.addEventListener('resize', resize);
   
-  // Initial setup
   updateColors();
   resize();
   frame();
@@ -330,20 +307,16 @@ if(yearEl) yearEl.textContent = new Date().getFullYear();
 
 /* ====== ABOUT PAGE: READ MORE ====== */
 (function readMore() {
-    // Check if we are on the about page by looking for the specific cards
     if (!document.querySelector('.about-cards')) {
         return;
     }
-
     const readMoreBtns = document.querySelectorAll('.read-more-btn');
-
     readMoreBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const card = btn.closest('.about-card');
             if (card) {
                 const content = card.querySelector('.about-card-right');
                 content.classList.toggle('expanded');
-
                 if (content.classList.contains('expanded')) {
                     btn.textContent = 'Read Less';
                 } else {
@@ -354,9 +327,7 @@ if(yearEl) yearEl.textContent = new Date().getFullYear();
     });
 })();
 
-
 /* ====== ACCESSIBILITY TOUCHES ====== */
-// Focus ring on keyboard users
 (function focusVisible(){
   function handle(e){
     if(e.key === 'Tab'){ document.body.classList.add('show-focus'); window.removeEventListener('keydown', handle); }
@@ -364,16 +335,12 @@ if(yearEl) yearEl.textContent = new Date().getFullYear();
   window.addEventListener('keydown', handle);
 })();
 
-// Always start from home section on refresh
 window.addEventListener('DOMContentLoaded', function() {
   if (window.location.hash) {
     window.history.replaceState(null, null, window.location.pathname + window.location.search);
     window.scrollTo(0, 0);
   }
 });
-
-// Scroll-to-top button logic - REMOVED
-// WhatsApp button logic - REMOVED
 
 /* ====== THEME TOGGLE ====== */
 (function themeToggle() {
@@ -383,7 +350,6 @@ window.addEventListener('DOMContentLoaded', function() {
   const body = document.body;
   const icon = toggleBtn.querySelector('i');
 
-  // Function to apply the theme
   const applyTheme = (theme) => {
     if (theme === 'light') {
       body.classList.add('light-theme');
@@ -400,58 +366,62 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   };
 
-  // Check for saved theme in localStorage on page load
-  const savedTheme = localStorage.getItem('theme') || 'dark'; // default to dark
+  const savedTheme = localStorage.getItem('theme') || 'dark'; 
   applyTheme(savedTheme);
 
-  // Event listener for the button
   toggleBtn.addEventListener('click', () => {
     const isLight = body.classList.contains('light-theme');
     const newTheme = isLight ? 'dark' : 'light';
-    
     applyTheme(newTheme);
     localStorage.setItem('theme', newTheme);
   });
 })();
-/* ====== PORTFOLIO CATEGORY FILTER ====== */
+
+/* ====== PORTFOLIO CATEGORY FILTER (FIXED) ====== */
 (function portfolioFilter() {
   const categoryCards = document.querySelectorAll('.portfolio-category-card');
   const projectGridWrapper = document.getElementById('projectGridWrapper');
   const portfolioSection = document.getElementById('portfolio');
   const categoriesContainer = document.querySelector('.portfolio-categories');
   const backBtn = document.getElementById('backToCategoriesBtn');
-  const allItems = document.querySelectorAll('#portfolioGrid .portfolio-item');
 
   if (!categoriesContainer || !projectGridWrapper || categoryCards.length === 0) {
     return;
   }
 
-  // Function to show projects of a specific category
   const showProjects = (category) => {
-    // Hide category cards and show project grid
     categoriesContainer.style.display = 'none';
     projectGridWrapper.style.display = 'block';
 
-    // Filter items
-    allItems.forEach(item => {
-      if (item.dataset.category === category) {
-        item.style.display = 'inline-block'; // Or 'block' depending on your grid styling
-      } else {
-        item.style.display = 'none';
-      }
-    });
+    const graphicLayout = document.querySelector('.graphic-vertical-layout');
+    const uiuxLayout = document.querySelector('.uiux-vertical-layout');
+    const webLayout = document.querySelector('.web-vertical-layout');
 
-    // Scroll to the top of the portfolio section for a smooth transition
+    if (graphicLayout) graphicLayout.style.display = 'none';
+    if (uiuxLayout) uiuxLayout.style.display = 'none';
+    if (webLayout) webLayout.style.display = 'none';
+
+    if (category === 'graphic' && graphicLayout) {
+      graphicLayout.style.display = 'flex';
+    } else if (category === 'uiux' && uiuxLayout) {
+      uiuxLayout.style.display = 'flex';
+    }
+
     portfolioSection.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Function to show the category selection view
   const showCategories = () => {
     projectGridWrapper.style.display = 'none';
     categoriesContainer.style.display = 'flex';
+    
+    const graphicLayout = document.querySelector('.graphic-vertical-layout');
+    const uiuxLayout = document.querySelector('.uiux-vertical-layout');
+    const webLayout = document.querySelector('.web-vertical-layout');
+    if (graphicLayout) graphicLayout.style.display = 'none';
+    if (uiuxLayout) uiuxLayout.style.display = 'none';
+    if (webLayout) webLayout.style.display = 'none';
   };
 
-  // Add click listeners to category cards
   categoryCards.forEach(card => {
     card.addEventListener('click', () => {
       const selectedCategory = card.dataset.category;
@@ -459,14 +429,14 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Add click listener to the "Back" button
   if (backBtn) {
     backBtn.addEventListener('click', showCategories);
   }
 })();
+
 /* ====== PORTFOLIO LIGHTBOX ====== */
 (function lightbox(){
-  const items = $$('.tile');
+  const items = $$('.graphic-vertical-layout img, .uiux-vertical-layout img, .web-vertical-layout .scroll-image');
   if (items.length === 0) return;
   
   const lb = $('#lightbox');
@@ -479,10 +449,28 @@ window.addEventListener('DOMContentLoaded', function() {
   let currentItemIndex = 0;
   let currentImageIndex = 0;
   let currentImages = [];
+  let currentCategoryItems = [];
+
+  const getCurrentCategory = () => {
+    const graphicLayout = document.querySelector('.graphic-vertical-layout');
+    const uiuxLayout = document.querySelector('.uiux-vertical-layout');
+    const webLayout = document.querySelector('.web-vertical-layout');
+    
+    if (graphicLayout && graphicLayout.style.display !== 'none') {
+      return $$('.graphic-vertical-layout img');
+    } else if (uiuxLayout && uiuxLayout.style.display !== 'none') {
+      return $$('.uiux-vertical-layout img');
+    } else if (webLayout && webLayout.style.display !== 'none') {
+      return $$('.web-vertical-layout .scroll-image');
+    } else {
+      return $$('.portfolio-item[data-category]:not([style*="display: none"])');
+    }
+  };
 
   const open = (itemIndex) => {
-    currentItemIndex = itemIndex;
-    const it = items[currentItemIndex];
+    currentCategoryItems = getCurrentCategory();
+    currentItemIndex = currentCategoryItems.findIndex(item => item === items[itemIndex]);
+    const it = items[itemIndex];
     const imagesAttr = it.dataset.images;
     const srcAttr = it.dataset.src;
     const ttl = it.dataset.title || '';
@@ -511,17 +499,10 @@ window.addEventListener('DOMContentLoaded', function() {
     img.alt = title.textContent;
     media.appendChild(img);
 
-    if (currentImages.length > 1) {
-      prev.style.display = 'block';
-      next.style.display = 'block';
-      prev.style.visibility = currentImageIndex === 0 ? 'hidden' : 'visible';
-      next.style.visibility = currentImageIndex === currentImages.length - 1 ? 'hidden' : 'visible';
-    } else {
-      prev.style.display = 'block';
-      next.style.display = 'block';
-      prev.style.visibility = 'visible';
-      next.style.visibility = 'visible';
-    }
+    prev.style.display = 'block';
+    next.style.display = 'block';
+    prev.style.visibility = currentItemIndex === 0 ? 'hidden' : 'visible';
+    next.style.visibility = currentItemIndex === currentCategoryItems.length - 1 ? 'hidden' : 'visible';
   };
 
   const closeLb = () => {
@@ -531,20 +512,20 @@ window.addEventListener('DOMContentLoaded', function() {
   };
 
   const go = (dir) => {
-    if (currentImages.length > 1) {
-      const newImageIndex = currentImageIndex + dir;
-      if (newImageIndex >= 0 && newImageIndex < currentImages.length) {
-        currentImageIndex = newImageIndex;
-        showImage();
-      } else {
-        // at the end of the images, go to the next item
-        currentItemIndex = (currentItemIndex + dir + items.length) % items.length;
-        open(currentItemIndex);
-      }
-    } else {
-      // only one image, so go to the next item
-      currentItemIndex = (currentItemIndex + dir + items.length) % items.length;
-      open(currentItemIndex);
+    const newIndex = currentItemIndex + dir;
+    if (newIndex >= 0 && newIndex < currentCategoryItems.length) {
+      currentItemIndex = newIndex;
+      const nextItem = currentCategoryItems[currentItemIndex];
+      const srcAttr = nextItem.dataset.src;
+      const ttl = nextItem.dataset.title || '';
+      const desc = nextItem.dataset.description || '';
+      
+      currentImages = srcAttr ? [srcAttr] : [];
+      currentImageIndex = 0;
+      
+      title.textContent = ttl;
+      description.innerHTML = desc;
+      showImage();
     }
   };
 
@@ -560,3 +541,6 @@ window.addEventListener('DOMContentLoaded', function() {
   next.addEventListener('click', () => go(1));
   prev.addEventListener('click', () => go(-1));
 })();
+
+
+
