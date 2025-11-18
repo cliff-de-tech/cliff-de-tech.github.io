@@ -795,7 +795,31 @@ body.light-theme .about .card {
   transform: translateZ(0);
 }
 
-
+/* Portfolio grid */
+.grid{
+  --size: 320px;
+  display:grid; grid-template-columns: repeat(auto-fill, minmax(min(var(--size), 100%), 1fr));
+  gap: 18px;
+}
+.tile:hover{transform: translateY(-4px); box-shadow: 0 12px 40px rgba(123,220,255,.25)}
+.tile{
+  position:relative; border-radius: var(--radius-sm); overflow:hidden;
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.12);
+  cursor:pointer; isolation:isolate; transform: translateZ(0);
+}
+.tile img{width:100%; height:240px; object-fit:cover; transition: transform .6s ease}
+.tile:hover img{transform:scale(1.06)}
+.tile .meta{
+  position:absolute; inset:auto 10px 10px 10px;
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  background: rgba(0,0,0,.45); padding:10px 12px; border-radius:12px;
+  color:var(--text); border:1px solid rgba(255,255,255,.12);
+  backdrop-filter: blur(6px)
+}
+.badge{
+  font-size:12px; color:var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:.6px
+}
 
 /* Lightbox */
 .lightbox{
@@ -1178,7 +1202,105 @@ footer{padding:44px 24px; color:var(--muted); text-align:center}
 
 /* ====== PORTFOLIO STYLES ====== */
 
+.portfolio-grid {
+  padding: 0 2em;
+  column-count: 3;
+  column-gap: 2em;
+}
 
+.portfolio-item {
+  display: inline-block;
+  margin: 0 0 2em;
+  width: 100%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+  background-color: var(--glass-2);
+  overflow: hidden;
+}
+
+.portfolio-item:hover {
+  border-color: var(--accent);
+}
+
+.portfolio-figure {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-figure img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-figure img {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.portfolio-item:hover .overlay {
+  opacity: 1;
+}
+
+.view-project-text {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.2rem;
+  font-family: "Space Grotesk", system-ui;
+}
+
+.portfolio-meta {
+  padding: 12px 16px;
+}
+
+.portfolio-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+  display: block;
+}
+
+.portfolio-badge {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Light theme adjustments */
+body.light-theme .portfolio-item {
+    background-color: #fff;
+    border: 2px solid rgba(0,0,0,0.1);
+}
+body.light-theme .portfolio-item:hover {
+  border-color: var(--accent-2);
+}
+
+/* Responsive columns */
+@media (max-width: 1024px) {
+  .portfolio-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-grid {
+    column-count: 1;
+  }
+}
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce){
@@ -1272,6 +1394,15 @@ body.light-theme .portfolio-category-card:hover {
     width: 100%;
     height: 180px;
   }
+  .portfolio-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 500px) {
+    .portfolio-grid {
+        column-count: 1;
+    }
 }
 
 /* Hide desktop-only images on mobile */
@@ -1491,3 +1622,101 @@ body.light-theme .uiux-vertical-layout img:hover {
   box-shadow: 0 8px 24px rgba(0,123,255,0.12);
 }
 
+/* ====== WEB DESIGN SPECIFIC STYLES ====== */
+
+/* 1. Override container conflicts */
+.web-bootstrap-layout {
+  width: 100%;
+  display: block;
+}
+
+/* 2. Fix the Portfolio Item to match Bootstrap grid */
+.web-bootstrap-layout .portfolio-item {
+  display: block;
+  width: 100%; 
+  margin: 0;
+  background: transparent;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  height: 320px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(30,41,59,0.15);
+  transition: box-shadow 0.3s;
+}
+
+.web-bootstrap-layout .portfolio-item:hover {
+  box-shadow: 0 12px 35px rgba(30,41,59,0.25);
+}
+
+/* 3. Scrolling Image Logic */
+.web-bootstrap-layout .scroll-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.web-bootstrap-layout .scroll-image {
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: top 6s ease;
+}
+
+/* 4. Hover Overlay */
+.web-bootstrap-layout .portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+}
+
+.web-bootstrap-layout .portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+.web-bootstrap-layout .portfolio-title {
+  color: white;
+  margin-bottom: 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.web-bootstrap-layout .portfolio-category {
+  color: #ccc;
+  margin-bottom: 16px;
+}
+
+.web-bootstrap-layout .portfolio-buttons .btn {
+  background: white;
+  color: black;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.web-bootstrap-layout .portfolio-buttons .btn:hover {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+}

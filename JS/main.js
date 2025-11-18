@@ -384,6 +384,8 @@ window.addEventListener('DOMContentLoaded', function() {
   const portfolioSection = document.getElementById('portfolio');
   const categoriesContainer = document.querySelector('.portfolio-categories');
   const backBtn = document.getElementById('backToCategoriesBtn');
+  const portfolioGrid = document.getElementById('portfolioGrid');
+  const allItems = document.querySelectorAll('#portfolioGrid .portfolio-item');
 
   if (!categoriesContainer || !projectGridWrapper || categoryCards.length === 0) {
     return;
@@ -393,18 +395,48 @@ window.addEventListener('DOMContentLoaded', function() {
     categoriesContainer.style.display = 'none';
     projectGridWrapper.style.display = 'block';
 
+    // RESET GRID STYLES: Ensure layout takes full width so Bootstrap rows work
+    if (portfolioGrid) {
+        portfolioGrid.style.display = 'block';
+        portfolioGrid.style.columnCount = 'auto';
+        portfolioGrid.style.width = '100%';
+    }
+
     const graphicLayout = document.querySelector('.graphic-vertical-layout');
     const uiuxLayout = document.querySelector('.uiux-vertical-layout');
-    const webLayout = document.querySelector('.web-vertical-layout');
+    const webLayout = document.querySelector('.web-bootstrap-layout');
 
     if (graphicLayout) graphicLayout.style.display = 'none';
     if (uiuxLayout) uiuxLayout.style.display = 'none';
     if (webLayout) webLayout.style.display = 'none';
 
-    if (category === 'graphic' && graphicLayout) {
-      graphicLayout.style.display = 'flex';
-    } else if (category === 'uiux' && uiuxLayout) {
-      uiuxLayout.style.display = 'flex';
+    if (category === 'graphic') {
+      if (graphicLayout) graphicLayout.style.display = 'flex';
+      // Hide generic portfolio items (Web Design items)
+      allItems.forEach(item => item.style.display = 'none');
+      
+    } else if (category === 'uiux') {
+      if (uiuxLayout) uiuxLayout.style.display = 'flex';
+      allItems.forEach(item => item.style.display = 'none');
+
+    } else if (category === 'web') {
+      if (webLayout) webLayout.style.setProperty('display', 'block', 'important');
+      // Explicitly show Web Design items and reset styles to let Bootstrap handle layout
+      allItems.forEach(item => {
+          item.style.display = 'block'; 
+          item.style.opacity = '1';
+          item.style.visibility = 'visible';
+      });
+
+    } else {
+      // Fallback
+      allItems.forEach(item => {
+        if (item.dataset.category === category) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
     }
 
     portfolioSection.scrollIntoView({ behavior: 'smooth' });
@@ -416,10 +448,12 @@ window.addEventListener('DOMContentLoaded', function() {
     
     const graphicLayout = document.querySelector('.graphic-vertical-layout');
     const uiuxLayout = document.querySelector('.uiux-vertical-layout');
-    const webLayout = document.querySelector('.web-vertical-layout');
+    const webLayout = document.querySelector('.web-bootstrap-layout');
     if (graphicLayout) graphicLayout.style.display = 'none';
     if (uiuxLayout) uiuxLayout.style.display = 'none';
     if (webLayout) webLayout.style.display = 'none';
+    
+    allItems.forEach(item => item.style.display = 'none');
   };
 
   categoryCards.forEach(card => {
@@ -436,7 +470,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 /* ====== PORTFOLIO LIGHTBOX ====== */
 (function lightbox(){
-  const items = $$('.graphic-vertical-layout img, .uiux-vertical-layout img, .web-vertical-layout .scroll-image');
+  const items = $$('.tile:not(.web-design-project), .graphic-vertical-layout img, .uiux-vertical-layout img');
   if (items.length === 0) return;
   
   const lb = $('#lightbox');
@@ -454,14 +488,11 @@ window.addEventListener('DOMContentLoaded', function() {
   const getCurrentCategory = () => {
     const graphicLayout = document.querySelector('.graphic-vertical-layout');
     const uiuxLayout = document.querySelector('.uiux-vertical-layout');
-    const webLayout = document.querySelector('.web-vertical-layout');
     
     if (graphicLayout && graphicLayout.style.display !== 'none') {
       return $$('.graphic-vertical-layout img');
     } else if (uiuxLayout && uiuxLayout.style.display !== 'none') {
       return $$('.uiux-vertical-layout img');
-    } else if (webLayout && webLayout.style.display !== 'none') {
-      return $$('.web-vertical-layout .scroll-image');
     } else {
       return $$('.portfolio-item[data-category]:not([style*="display: none"])');
     }
@@ -542,5 +573,28 @@ window.addEventListener('DOMContentLoaded', function() {
   prev.addEventListener('click', () => go(-1));
 })();
 
+/* ====== WEB DESIGN AUTO SCROLL ====== */
+(function webAutoScroll() {
+  // This logic is handled via CSS transition but we keep the listener just in case of dynamic additions
+  document.querySelectorAll('.img-hover-scroll').forEach(function (box) {
+    const image = box.querySelector('.scroll-image');
+    if (!image) return;
+    
+    const containerHeight = box.clientHeight;
 
+    box.addEventListener('mouseenter', function () {
+      const imageHeight = image.clientHeight;
+      const scrollDistance = imageHeight - containerHeight;
 
+      if (scrollDistance > 0) {
+        image.style.transition = 'top 8s linear';
+        image.style.top = `-${scrollDistance}px`;
+      }
+    });
+
+    box.addEventListener('mouseleave', function () {
+      image.style.transition = 'top 6s ease';
+      image.style.top = '0';
+    });
+  });
+})();
