@@ -1,10 +1,10 @@
 .web-vertical-layout {
   width: 100%;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 auto 60px auto;
   display: none !important;
   flex-direction: column;
-  gap: 24px;
+  gap: 48px;
 }
 
 .web-vertical-layout[style*="display: flex"] {
@@ -20,6 +20,7 @@
   cursor: pointer;
   box-shadow: 0 8px 25px rgba(30,41,59,0.15);
   transition: box-shadow 0.3s, transform 0.3s;
+  margin-bottom: 24px;
 }
 
 .web-item:hover {

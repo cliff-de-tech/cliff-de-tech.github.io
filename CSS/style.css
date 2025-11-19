@@ -1446,7 +1446,7 @@ body.light-theme .portfolio-category-card:hover {
 /* ====== FOOTER STYLES ====== */
 
 footer {
-  margin-top: auto;
+  margin-top: 80px;
   background: var(--glass);
   border-top: 1px solid var(--glass-2);
   padding: 50px 0 30px 0;
@@ -1562,10 +1562,10 @@ body.light-theme .footer-subscribe .button:hover {
 .graphic-vertical-layout {
   width: 100%;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 auto 60px auto;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .graphic-vertical-layout img {
@@ -1575,6 +1575,7 @@ body.light-theme .footer-subscribe .button:hover {
   border: 1px solid var(--glass-2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  margin-bottom: 24px;
 }
 
 .graphic-vertical-layout img:hover {
@@ -1594,10 +1595,10 @@ body.light-theme .graphic-vertical-layout img:hover {
 .uiux-vertical-layout {
   width: 100%;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 auto 60px auto;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .uiux-vertical-layout img {
@@ -1607,6 +1608,7 @@ body.light-theme .graphic-vertical-layout img:hover {
   border: 1px solid var(--glass-2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  margin-bottom: 24px;
 }
 
 .uiux-vertical-layout img:hover {
