@@ -395,48 +395,22 @@ window.addEventListener('DOMContentLoaded', function() {
     categoriesContainer.style.display = 'none';
     projectGridWrapper.style.display = 'block';
 
-    // RESET GRID STYLES: Ensure layout takes full width so Bootstrap rows work
-    if (portfolioGrid) {
-        portfolioGrid.style.display = 'block';
-        portfolioGrid.style.columnCount = 'auto';
-        portfolioGrid.style.width = '100%';
-    }
-
     const graphicLayout = document.querySelector('.graphic-vertical-layout');
     const uiuxLayout = document.querySelector('.uiux-vertical-layout');
-    const webLayout = document.querySelector('.web-bootstrap-layout');
+    const webLayout = document.querySelector('.web-vertical-layout');
 
+    // Hide all layouts first
     if (graphicLayout) graphicLayout.style.display = 'none';
     if (uiuxLayout) uiuxLayout.style.display = 'none';
     if (webLayout) webLayout.style.display = 'none';
 
-    if (category === 'graphic') {
-      if (graphicLayout) graphicLayout.style.display = 'flex';
-      // Hide generic portfolio items (Web Design items)
-      allItems.forEach(item => item.style.display = 'none');
-      
-    } else if (category === 'uiux') {
-      if (uiuxLayout) uiuxLayout.style.display = 'flex';
-      allItems.forEach(item => item.style.display = 'none');
-
-    } else if (category === 'web') {
-      if (webLayout) webLayout.style.setProperty('display', 'block', 'important');
-      // Explicitly show Web Design items and reset styles to let Bootstrap handle layout
-      allItems.forEach(item => {
-          item.style.display = 'block'; 
-          item.style.opacity = '1';
-          item.style.visibility = 'visible';
-      });
-
-    } else {
-      // Fallback
-      allItems.forEach(item => {
-        if (item.dataset.category === category) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
+    // Show the selected category layout
+    if (category === 'graphic' && graphicLayout) {
+      graphicLayout.style.display = 'block';
+    } else if (category === 'uiux' && uiuxLayout) {
+      uiuxLayout.style.display = 'block';
+    } else if (category === 'web' && webLayout) {
+      webLayout.style.display = 'flex';
     }
 
     portfolioSection.scrollIntoView({ behavior: 'smooth' });
@@ -448,12 +422,10 @@ window.addEventListener('DOMContentLoaded', function() {
     
     const graphicLayout = document.querySelector('.graphic-vertical-layout');
     const uiuxLayout = document.querySelector('.uiux-vertical-layout');
-    const webLayout = document.querySelector('.web-bootstrap-layout');
+    const webLayout = document.querySelector('.web-vertical-layout');
     if (graphicLayout) graphicLayout.style.display = 'none';
     if (uiuxLayout) uiuxLayout.style.display = 'none';
     if (webLayout) webLayout.style.display = 'none';
-    
-    allItems.forEach(item => item.style.display = 'none');
   };
 
   categoryCards.forEach(card => {
@@ -470,7 +442,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 /* ====== PORTFOLIO LIGHTBOX ====== */
 (function lightbox(){
-  const items = $$('.tile:not(.web-design-project), .graphic-vertical-layout img, .uiux-vertical-layout img');
+  const items = $$('.graphic-vertical-layout img, .uiux-vertical-layout img, .web-vertical-layout .scroll-image');
   if (items.length === 0) return;
   
   const lb = $('#lightbox');
@@ -488,13 +460,16 @@ window.addEventListener('DOMContentLoaded', function() {
   const getCurrentCategory = () => {
     const graphicLayout = document.querySelector('.graphic-vertical-layout');
     const uiuxLayout = document.querySelector('.uiux-vertical-layout');
+    const webLayout = document.querySelector('.web-vertical-layout');
     
-    if (graphicLayout && graphicLayout.style.display !== 'none') {
+    if (graphicLayout && graphicLayout.style.display === 'block') {
       return $$('.graphic-vertical-layout img');
-    } else if (uiuxLayout && uiuxLayout.style.display !== 'none') {
+    } else if (uiuxLayout && uiuxLayout.style.display === 'block') {
       return $$('.uiux-vertical-layout img');
+    } else if (webLayout && webLayout.style.display === 'block') {
+      return $$('.web-vertical-layout .scroll-image');
     } else {
-      return $$('.portfolio-item[data-category]:not([style*="display: none"])');
+      return [];
     }
   };
 

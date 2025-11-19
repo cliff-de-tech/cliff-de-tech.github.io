@@ -100,14 +100,3 @@ body.light-theme .web-item {
 body.light-theme .web-item:hover {
   box-shadow: 0 12px 35px rgba(0,123,255,0.15);
 }
-
-@media (max-width: 768px) {
-  .web-vertical-layout {
-    max-width: 95vw;
-    padding: 0 10px;
-  }
-  
-  .web-item {
-    height: 300px;
-  }
-}
