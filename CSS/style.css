@@ -369,16 +369,16 @@ body.light-theme .hero-intro {
   font-weight: 800;
   line-height: 1.05;
   background: linear-gradient(90deg, #7bdcff 10%, #9b7bff 90%);
-  -webkit-background-clip: text;
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0 0 24px 0;
   font-family: 'Space Grotesk', 'Inter', Arial, sans-serif;
 }
 body.light-theme .hero-title {
   background: linear-gradient(90deg, var(--accent) 10%, var(--accent-2) 90%);
-  -webkit-background-clip: text;
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .hero-subtitle {
@@ -599,6 +599,7 @@ section{
   margin-bottom: 32px;
   font-family: 'Space Grotesk', 'Inter', Arial, sans-serif;
   background: linear-gradient(90deg, #7bdcff 10%, #9b7bff 90%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: left;
@@ -607,8 +608,8 @@ section{
 }
 body.light-theme .section-title {
   background: linear-gradient(90deg, var(--accent) 10%, var(--accent-2) 90%);
-  -webkit-background-clip: text;
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -661,6 +662,7 @@ body.light-theme .section-title {
   margin-bottom: 8px;
   display: block;
   background: linear-gradient(90deg, #7bdcff 10%, #9b7bff 90%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -1062,12 +1064,14 @@ body.light-theme .prof-skill:hover {
     gap: 12px;
     margin-bottom: 12px;
     background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 .skill-category-title i {
     font-size: 1.8rem;
     background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -1353,8 +1357,8 @@ body.light-theme .portfolio-category-card:hover {
   font-size: clamp(1.4rem, 4vw, 1.8rem);
   margin-bottom: 12px;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
