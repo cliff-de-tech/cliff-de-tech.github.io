@@ -441,111 +441,74 @@ window.addEventListener('DOMContentLoaded', function() {
 })();
 
 /* ====== PORTFOLIO LIGHTBOX ====== */
-(function lightbox(){
-  const items = $$('.graphic-vertical-layout img, .uiux-vertical-layout img, .web-vertical-layout .scroll-image');
-  if (items.length === 0) return;
-  
-  const lb = $('#lightbox');
-  const media = $('#lightboxMedia');
-  const title = $('#lightboxTitle');
-  const description = $('#lightboxDescription');
-  const close = $('#closeLb');
-  const prev = $('#prevBtn');
-  const next = $('#nextBtn');
-  let currentItemIndex = 0;
-  let currentImageIndex = 0;
-  let currentImages = [];
-  let currentCategoryItems = [];
+(function lightbox() {
+    const items = $$('.graphic-vertical-layout img, .uiux-vertical-layout img, .web-vertical-layout .scroll-image');
+    if (items.length === 0) return;
 
-  const getCurrentCategory = () => {
-    const graphicLayout = document.querySelector('.graphic-vertical-layout');
-    const uiuxLayout = document.querySelector('.uiux-vertical-layout');
-    const webLayout = document.querySelector('.web-vertical-layout');
-    
-    if (graphicLayout && graphicLayout.style.display === 'block') {
-      return $$('.graphic-vertical-layout img');
-    } else if (uiuxLayout && uiuxLayout.style.display === 'block') {
-      return $$('.uiux-vertical-layout img');
-    } else if (webLayout && webLayout.style.display === 'block') {
-      return $$('.web-vertical-layout .scroll-image');
-    } else {
-      return [];
-    }
-  };
+    const lb = $('#lightbox');
+    const media = $('#lightboxMedia');
+    const title = $('#lightboxTitle');
+    const description = $('#lightboxDescription');
+    const close = $('#closeLb');
+    const prev = $('#prevBtn');
+    const next = $('#nextBtn');
+    let currentItemIndex = 0;
+    let currentCategoryItems = [];
 
-  const open = (itemIndex) => {
-    currentCategoryItems = getCurrentCategory();
-    currentItemIndex = currentCategoryItems.findIndex(item => item === items[itemIndex]);
-    const it = items[itemIndex];
-    const imagesAttr = it.dataset.images;
-    const srcAttr = it.dataset.src;
-    const ttl = it.dataset.title || '';
-    const desc = it.dataset.description || '';
+    const open = (item) => {
+        const category = item.closest('.graphic-vertical-layout, .uiux-vertical-layout, .web-vertical-layout');
+        if (category) {
+            currentCategoryItems = Array.from(category.querySelectorAll('img, .scroll-image'));
+            currentItemIndex = currentCategoryItems.indexOf(item);
+            showItem(item);
+            lb.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+    };
 
-    if (imagesAttr) {
-      currentImages = imagesAttr.split(',');
-      currentImageIndex = 0;
-    } else {
-      currentImages = srcAttr ? [srcAttr] : [];
-      currentImageIndex = 0;
-    }
+    const showItem = (item) => {
+        const srcAttr = item.dataset.src;
+        const ttl = item.dataset.title || '';
+        const desc = item.dataset.description || '';
 
-    title.textContent = ttl;
-    description.innerHTML = desc;
-    lb.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    showImage();
-  };
+        title.textContent = ttl;
+        description.innerHTML = desc;
+        media.innerHTML = '';
+        const img = new Image();
+        img.src = srcAttr;
+        img.alt = ttl;
+        media.appendChild(img);
 
-  const showImage = () => {
-    if (currentImages.length === 0) return;
-    media.innerHTML = '';
-    const img = new Image();
-    img.src = currentImages[currentImageIndex];
-    img.alt = title.textContent;
-    media.appendChild(img);
+        prev.style.visibility = currentItemIndex === 0 ? 'hidden' : 'visible';
+        next.style.visibility = currentItemIndex === currentCategoryItems.length - 1 ? 'hidden' : 'visible';
+    };
 
-    prev.style.display = 'block';
-    next.style.display = 'block';
-    prev.style.visibility = currentItemIndex === 0 ? 'hidden' : 'visible';
-    next.style.visibility = currentItemIndex === currentCategoryItems.length - 1 ? 'hidden' : 'visible';
-  };
+    const closeLb = () => {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+    };
 
-  const closeLb = () => {
-    lb.classList.remove('open');
-    media.innerHTML = '';
-    document.body.style.overflow = '';
-  };
+    const go = (dir) => {
+        const newIndex = currentItemIndex + dir;
+        if (newIndex >= 0 && newIndex < currentCategoryItems.length) {
+            currentItemIndex = newIndex;
+            showItem(currentCategoryItems[currentItemIndex]);
+        }
+    };
 
-  const go = (dir) => {
-    const newIndex = currentItemIndex + dir;
-    if (newIndex >= 0 && newIndex < currentCategoryItems.length) {
-      currentItemIndex = newIndex;
-      const nextItem = currentCategoryItems[currentItemIndex];
-      const srcAttr = nextItem.dataset.src;
-      const ttl = nextItem.dataset.title || '';
-      const desc = nextItem.dataset.description || '';
-      
-      currentImages = srcAttr ? [srcAttr] : [];
-      currentImageIndex = 0;
-      
-      title.textContent = ttl;
-      description.innerHTML = desc;
-      showImage();
-    }
-  };
-
-  items.forEach((it, i) => it.addEventListener('click', () => open(i)));
-  close.addEventListener('click', closeLb);
-  lb.addEventListener('click', (e) => { if (e.target === lb) closeLb(); });
-  document.addEventListener('keydown', (e) => {
-    if (!lb.classList.contains('open')) return;
-    if (e.key === 'Escape') closeLb();
-    if (e.key === 'ArrowRight') go(1);
-    if (e.key === 'ArrowLeft') go(-1);
-  });
-  next.addEventListener('click', () => go(1));
-  prev.addEventListener('click', () => go(-1));
+    items.forEach(it => it.addEventListener('click', () => open(it)));
+    close.addEventListener('click', closeLb);
+    lb.addEventListener('click', (e) => {
+        if (e.target === lb) closeLb();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLb();
+        if (e.key === 'ArrowRight') go(1);
+        if (e.key === 'ArrowLeft') go(-1);
+    });
+    next.addEventListener('click', () => go(1));
+    prev.addEventListener('click', () => go(-1));
 })();
 
 /* ====== WEB DESIGN AUTO SCROLL ====== */
