@@ -102,23 +102,9 @@ body.light-theme .bg-overlay-gradient {
 /* ====== NAV ====== */
 @media (max-width: 700px) {
   .nav {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 32px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--border-radius-lg);
-  z-index: 1000;
-  width: calc(100% - 40px);
-  max-width: var(--max-width);
-  box-shadow: var(--shadow-lg);
-}
+    position: relative;
+    z-index: 100;
+  }
   .nav ul {
     display: none;
     flex-direction: column;
@@ -197,16 +183,16 @@ body.light-theme .bg-overlay-gradient {
   }
 }
 .nav{
-  position: fixed;
+  position: fixed; /* changed from sticky */
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100%;     /* ensure full width */
   height: var(--nav-h);
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 clamp(16px, 4vw, 40px);
   background: linear-gradient(to bottom, rgba(8,9,12,.85), rgba(8,9,12,0));
   backdrop-filter: blur(8px);
-  z-index: 100;
+  z-index: 100;    /* higher z-index */
   box-shadow: 0 2px 18px rgba(123,220,255,.08);
   transition: background .2s;
 }
@@ -216,7 +202,6 @@ body.light-theme .nav {
 }
 body {
   padding-top: var(--nav-h);
-  margin: 0;
 }
 .brand{
   display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text);
@@ -272,7 +257,7 @@ body.light-theme .theme-toggle {
   .theme-toggle {
     position: absolute;
     top: 12px;
-    right: 80px; 
+    right: 80px; /* Position it next to the menu button */
     z-index: 101;
     background: rgba(30,60,100,0.7);
     border: 2px solid #7bdcff;
@@ -419,16 +404,44 @@ body.light-theme .hero-socials a:hover {
   box-shadow: 0 4px 24px rgba(123,220,255,0.10);
   transition: background 0.2s, color 0.2s, border 0.2s;
   text-decoration: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+  letter-spacing: 0.5px;
 }
+
+/* "View My Work" Button - Blue/Cyan Theme */
+.button:not(.outline) {
+  background: rgba(30, 60, 100, 0.3); /* Dark semi-transparent blue background */
+  color: #28a9ff; /* Bright cyan text */
+  border: 1px solid rgba(40, 169, 255, 0.5); /* Subtle cyan border */
+  box-shadow: 0 0 15px rgba(40, 169, 255, 0.1); /* Faint outer glow */
+}
+
+.button:not(.outline):hover {
+  background: rgba(40, 169, 255, 0.15); /* Slightly brighter background on hover */
+  border-color: #28a9ff; /* Solid border on hover */
+  color: #fff; /* Text turns white */
+  box-shadow: 0 0 20px rgba(40, 169, 255, 0.4); /* Stronger glow */
+  transform: translateY(-2px);
+}
+
+/* "About Me" Button - Purple Theme */
 .button.outline {
-  background: rgba(255,255,255,0.12);
-  color: #9b7bff;
-  border: 1.5px solid rgba(155,123,255,0.25);
+  background: rgba(60, 30, 100, 0.3); /* Dark semi-transparent purple background */
+  color: #b56eff; /* Bright purple text */
+  border: 1px solid rgba(181, 110, 255, 0.5); /* Subtle purple border */
+  box-shadow: 0 0 15px rgba(181, 110, 255, 0.1); /* Faint outer glow */
 }
-.button:hover, .button.outline:hover {
-  background: linear-gradient(90deg, #7bdcff 10%, #9b7bff 90%);
+
+.button.outline:hover {
+  background: rgba(181, 110, 255, 0.15);
+  border-color: #b56eff;
   color: #fff;
-  border-color: #9b7bff;
+  box-shadow: 0 0 20px rgba(181, 110, 255, 0.4);
+  transform: translateY(-2px);
 }
 body.light-theme .button {
     background: rgba(0,0,0,0.05);
