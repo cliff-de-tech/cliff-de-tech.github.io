@@ -1,4 +1,5 @@
 /* ====== UTIL: helpers ====== */
+// Helper for selecting elements (similar to jQuery but lightweight)
 const $ = (sel, ctx=document) => ctx.querySelector(sel);
 const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
 
@@ -58,18 +59,18 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 })();
 
-/* ====== REVEAL ON SCROLL ====== */
+/* ====== REVEAL ON SCROLL (FIXED) ====== */
 (function reveal(){
   const els = $$('.reveal');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(en=>{
       if(en.isIntersecting){
         en.target.classList.add('visible');
-      } else {
-        en.target.classList.remove('visible');
+        // Once visible, stop observing it so it doesn't hide again
+        io.unobserve(en.target);
       }
     })
-  }, {threshold:.16});
+  }, {threshold: 0.1}); // Lowered threshold so it triggers sooner
   els.forEach(el=> io.observe(el));
 })();
 
@@ -377,40 +378,41 @@ window.addEventListener('DOMContentLoaded', function() {
   });
 })();
 
-/* ====== PORTFOLIO CATEGORY FILTER (FIXED) ====== */
+/* ====== PORTFOLIO CATEGORY FILTER (REFAC) ====== */
 (function portfolioFilter() {
   const categoryCards = document.querySelectorAll('.portfolio-category-card');
   const projectGridWrapper = document.getElementById('projectGridWrapper');
   const portfolioSection = document.getElementById('portfolio');
   const categoriesContainer = document.querySelector('.portfolio-categories');
   const backBtn = document.getElementById('backToCategoriesBtn');
-  const portfolioGrid = document.getElementById('portfolioGrid');
-  const allItems = document.querySelectorAll('#portfolioGrid .portfolio-item');
+  const graphicLayout = document.querySelector('.graphic-vertical-layout');
+  const uiuxLayout = document.querySelector('.uiux-vertical-layout');
+  const webLayout = document.querySelector('.web-vertical-layout');
 
   if (!categoriesContainer || !projectGridWrapper || categoryCards.length === 0) {
     return;
   }
 
+  // Helper to hide all layouts
+  const hideAllLayouts = () => {
+    if (graphicLayout) graphicLayout.classList.remove('active');
+    if (uiuxLayout) uiuxLayout.classList.remove('active');
+    if (webLayout) webLayout.classList.remove('active');
+  };
+
   const showProjects = (category) => {
     categoriesContainer.style.display = 'none';
     projectGridWrapper.style.display = 'block';
 
-    const graphicLayout = document.querySelector('.graphic-vertical-layout');
-    const uiuxLayout = document.querySelector('.uiux-vertical-layout');
-    const webLayout = document.querySelector('.web-vertical-layout');
+    hideAllLayouts();
 
-    // Hide all layouts first
-    if (graphicLayout) graphicLayout.style.display = 'none';
-    if (uiuxLayout) uiuxLayout.style.display = 'none';
-    if (webLayout) webLayout.style.display = 'none';
-
-    // Show the selected category layout
+    // Activate selected category
     if (category === 'graphic' && graphicLayout) {
-      graphicLayout.style.display = 'block';
+      graphicLayout.classList.add('active');
     } else if (category === 'uiux' && uiuxLayout) {
-      uiuxLayout.style.display = 'block';
+      uiuxLayout.classList.add('active');
     } else if (category === 'web' && webLayout) {
-      webLayout.style.display = 'flex';
+      webLayout.classList.add('active');
     }
 
     portfolioSection.scrollIntoView({ behavior: 'smooth' });
@@ -419,13 +421,7 @@ window.addEventListener('DOMContentLoaded', function() {
   const showCategories = () => {
     projectGridWrapper.style.display = 'none';
     categoriesContainer.style.display = 'flex';
-    
-    const graphicLayout = document.querySelector('.graphic-vertical-layout');
-    const uiuxLayout = document.querySelector('.uiux-vertical-layout');
-    const webLayout = document.querySelector('.web-vertical-layout');
-    if (graphicLayout) graphicLayout.style.display = 'none';
-    if (uiuxLayout) uiuxLayout.style.display = 'none';
-    if (webLayout) webLayout.style.display = 'none';
+    hideAllLayouts();
   };
 
   categoryCards.forEach(card => {
@@ -440,7 +436,7 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 })();
 
-/* ====== PORTFOLIO LIGHTBOX ====== */
+/* ====== PORTFOLIO LIGHTBOX (ACCESSIBILITY UPDATE) ====== */
 (function lightbox() {
     const items = $$('.graphic-vertical-layout img, .uiux-vertical-layout img, .web-vertical-layout .scroll-image');
     if (items.length === 0) return;
@@ -452,6 +448,8 @@ window.addEventListener('DOMContentLoaded', function() {
     const close = $('#closeLb');
     const prev = $('#prevBtn');
     const next = $('#nextBtn');
+    const mainContent = document.querySelector('nav, section, footer, header'); // Elements to hide from screen reader
+    
     let currentItemIndex = 0;
     let currentCategoryItems = [];
 
@@ -463,6 +461,10 @@ window.addEventListener('DOMContentLoaded', function() {
             showItem(item);
             lb.classList.add('open');
             document.body.style.overflow = 'hidden';
+            
+            // Accessibility: Trap focus
+            if(mainContent) mainContent.setAttribute('aria-hidden', 'true');
+            close.focus();
         }
     };
 
@@ -486,6 +488,9 @@ window.addEventListener('DOMContentLoaded', function() {
     const closeLb = () => {
         lb.classList.remove('open');
         document.body.style.overflow = '';
+        
+        // Accessibility: Restore content
+        if(mainContent) mainContent.removeAttribute('aria-hidden');
     };
 
     const go = (dir) => {
@@ -501,12 +506,14 @@ window.addEventListener('DOMContentLoaded', function() {
     lb.addEventListener('click', (e) => {
         if (e.target === lb) closeLb();
     });
+    
     document.addEventListener('keydown', (e) => {
         if (!lb.classList.contains('open')) return;
         if (e.key === 'Escape') closeLb();
         if (e.key === 'ArrowRight') go(1);
         if (e.key === 'ArrowLeft') go(-1);
     });
+    
     next.addEventListener('click', () => go(1));
     prev.addEventListener('click', () => go(-1));
 })();

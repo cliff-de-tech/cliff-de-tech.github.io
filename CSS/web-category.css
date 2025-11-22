@@ -1,16 +1,39 @@
+/* Web Design Layout (Needs more space for cards) */
 .web-vertical-layout {
   width: 100%;
   max-width: 800px;
   margin: 0 auto 60px auto;
-  display: none !important;
+  display: none;
   flex-direction: column;
-  gap: 48px;
+  gap: 24px; /* Spacious gap for web cards */
+  animation: fadeIn 0.5s ease;
 }
 
-.web-vertical-layout[style*="display: flex"] {
-  display: flex !important;
+/* Graphic & UI/UX Layouts (Reverted to original spacing style) */
+.uiux-vertical-layout,
+.graphic-vertical-layout {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 60px auto;
+  display: none;
+  flex-direction: column;
+  /* Removed gap: 24px to rely on margin-bottom for tighter control */
+  animation: fadeIn 0.5s ease;
 }
 
+/* Active state triggers display */
+.web-vertical-layout.active,
+.uiux-vertical-layout.active,
+.graphic-vertical-layout.active {
+  display: flex;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Web Design Card Styles */
 .web-item {
   width: 100%;
   border-radius: 10px;
@@ -20,7 +43,7 @@
   cursor: pointer;
   box-shadow: 0 8px 25px rgba(30,41,59,0.15);
   transition: box-shadow 0.3s, transform 0.3s;
-  margin-bottom: 24px;
+  margin-bottom: 0;
 }
 
 .web-item:hover {
@@ -94,10 +117,45 @@
   transform: translateY(-2px);
 }
 
+/* Graphic & UI/UX Image Styles */
+.graphic-vertical-layout img,
+.uiux-vertical-layout img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 12px; /* Restored the margin-bottom for spacing */
+}
+
+/* Remove margin from the last image */
+.graphic-vertical-layout img:last-child,
+.uiux-vertical-layout img:last-child {
+  margin-bottom: 12px;
+}
+
+.graphic-vertical-layout img:hover,
+.uiux-vertical-layout img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(123,220,255,0.15);
+}
+
+/* Light Theme Adjustments */
 body.light-theme .web-item {
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
 body.light-theme .web-item:hover {
   box-shadow: 0 12px 35px rgba(0,123,255,0.15);
+}
+
+body.light-theme .graphic-vertical-layout img,
+body.light-theme .uiux-vertical-layout img {
+  border-color: rgba(0,0,0,0.1);
+}
+
+body.light-theme .graphic-vertical-layout img:hover,
+body.light-theme .uiux-vertical-layout img:hover {
+  box-shadow: 0 8px 24px rgba(0,123,255,0.12);
 }

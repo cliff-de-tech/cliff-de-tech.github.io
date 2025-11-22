@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="CSS/style.css?v=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="icon" type="image/png" href="assets/logo.webp">
+  <title>Page Not Found | Cliff-De-Tech</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    .error-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      text-align: center;
+      padding: 20px;
+    }
+    .error-code {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 8rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #7bdcff 10%, #9b7bff 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+      line-height: 1;
+    }
+    .error-msg {
+      font-size: 1.5rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .error-desc {
+      color: var(--muted);
+      max-width: 400px;
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="bg-overlay-gradient" aria-hidden="true"></div>
+
+<nav class="nav">
+  <a class="brand" href="index.html" aria-label="Home">
+    <img src="assets/logo.webp" alt="Cliff-De-Tech Logo" width="32" height="32" />
+    <span>Cliff-De-Tech</span>
+  </a>
+  <div class="nav-right">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <i class='bx bxs-moon'></i>
+    </button>
+  </div>
+</nav>
+
+<section class="error-container">
+  <h1 class="error-code">404</h1>
+  <h2 class="error-msg">Page Not Found</h2>
+  <p class="error-desc">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+  <a href="index.html" class="button">Go Back Home</a>
+</section>
+
+<script src="JS/main.js?v=1.0"></script>
+</body>
+</html>

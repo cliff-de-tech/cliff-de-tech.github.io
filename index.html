@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+<html lang="en">
 <head>
-  <link rel="stylesheet" href="CSS/style.css?v=1.0">
-  <link rel="stylesheet" href="CSS/web-category.css?v=1.0">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.boxicons.com">
+  <link rel="preconnect" href="https://unpkg.com">
+  <!-- CACHE BUSTING: Updated to v=1.1 -->
+  <link rel="stylesheet" href="CSS/style.css?v=1.1">
+  <link rel="stylesheet" href="CSS/web-category.css?v=1.1">
+  <!-- Social Sharing / Open Graph Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cliff-de-tech.github.io/">
+  <meta property="og:title" content="Clifford Opoku-Sarkodie | Creative Technologist">
+  <meta property="og:description" content="Bridging design and code. View my projects in Web Dev, UI/UX, and Graphic Design.">
+  <meta property="og:image" content="https://cliff-de-tech.github.io/assets/me.webp">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Clifford Opoku-Sarkodie | Creative Technologist">
+  <meta name="twitter:description" content="Bridging design and code. View my projects in Web Dev, UI/UX, and Graphic Design.">
+  <meta name="twitter:image" content="https://cliff-de-tech.github.io/assets/me.webp">
   <link href='https://cdn.boxicons.com/3.0.4/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"></noscript>
@@ -12,7 +30,6 @@
   <title>Clifford Opoku-Sarkodie | Creative Technologist & Developer</title>
   <meta name="google-site-verification" content="UxjWMFhIU8iz2KEHdoypfxotkE1lo-xSWkkKhqYYpBE" />
   <meta name="description" content="Creative Technologist bridging design and development. Specializing in web development, graphic design, and UI/UX to build functional, high-performance digital experiences." />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -39,6 +56,8 @@
   </div>
   <button class="menu-btn" aria-label="Open menu">&#9776;</button>
 </nav>
+
+<!-- HERO SECTION -->
 <header id="home" class="hero custom-hero reveal">
   <div class="hero-left">
     <span class="hero-badge">CREATIVE TECHNOLOGIST &middot; WEB DEVELOPER &middot; GRAPHIC & UI/UX <br>  DESIGNER BRIDGING CODE & CREATIVITY</span>
@@ -57,7 +76,7 @@
         </div>
     <div class="hero-cta">
       <a href="about.html" class="button outline">About Me</a>
-      <a href="portfolio.html" class="button outline">Projects</a>
+      <a href="#featured" class="button">View Work</a>
     </div>
   </div>
   <div class="hero-right">
@@ -68,17 +87,121 @@
     </div>
   </div>
 </header>
-<div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Media preview">
-  <div class="lightbox-content">
-    <div class="lightbox-media" id="lightboxMedia"></div>
-    <div class="ctrls">
-      <button class="icon-btn" id="prevBtn" aria-label="Previous">⟨ Prev</button>
-      <div style="opacity:.8" id="lightboxTitle">Title</div>
-      <button class="icon-btn" id="nextBtn" aria-label="Next">Next ⟩</button>
-    </div>
-    <button class="icon-btn" id="closeLb" aria-label="Close">✕ Close</button>
+
+<!-- TECH STACK MARQUEE -->
+<div class="tech-stack-marquee reveal">
+  <div class="marquee-content">
+    <!-- Graphic Design Tools -->
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg" width="24" height="24" alt="Ai"> Illustrator</span>
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" width="24" height="24" alt="Ps"> Photoshop</span>
+    <span><img src="https://www.vectorlogo.zone/logos/canva/canva-icon.svg" width="24" height="24" alt="Canva"> Canva</span>
+    
+    <!-- UI/UX Tools -->
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" width="24" height="24" alt="Figma"> Figma</span>
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xd/xd-plain.svg" width="24" height="24" alt="Xd"> Adobe XD</span>
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sketch/sketch-original.svg" width="24" height="24" alt="Sketch"> Sketch</span>
+    
+    <!-- Web Dev Tools -->
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="24" height="24" alt="HTML5"> HTML5</span>
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="24" height="24" alt="CSS3"> CSS3</span>
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="24" height="24" alt="JS"> JavaScript</span>
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="24" height="24" alt="Git"> Git & GitHub</span>
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="24" height="24" alt="VS Code"> VS Code</span>
+
+    <!-- DUPLICATE FOR LOOP -->
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg" width="24" height="24" alt="Ai"> Illustrator</span>
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" width="24" height="24" alt="Ps"> Photoshop</span>
+    <span><img src="https://www.vectorlogo.zone/logos/canva/canva-icon.svg" width="24" height="24" alt="Canva"> Canva</span>
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" width="24" height="24" alt="Figma"> Figma</span>
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xd/xd-plain.svg" width="24" height="24" alt="Xd"> Adobe XD</span>
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sketch/sketch-original.svg" width="24" height="24" alt="Sketch"> Sketch</span>
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="24" height="24" alt="HTML5"> HTML5</span>
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="24" height="24" alt="CSS3"> CSS3</span>
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="24" height="24" alt="JS"> JavaScript</span>
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="24" height="24" alt="Git"> Git & GitHub</span>
+    <span><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="24" height="24" alt="VS Code"> VS Code</span>
   </div>
 </div>
+
+<!-- SERVICES PREVIEW -->
+<section id="services-preview" class="reveal">
+  <div class="section-header center-text">
+    <h2 class="section-title">What I Do</h2>
+    <p class="section-desc">I combine technical expertise with artistic vision to deliver complete digital solutions.</p>
+  </div>
+  <div class="services-grid">
+    <article class="service-card" data-tilt>
+      <div class="icon">🎨</div>
+      <h3>Graphic Design</h3>
+      <p>Brand identity, marketing materials, and visual assets that tell a compelling story.</p>
+    </article>
+    <article class="service-card" data-tilt>
+      <div class="icon">💻</div>
+      <h3>UI/UX Design</h3>
+      <p>User-centric interfaces and prototypes that ensure intuitive and engaging experiences.</p>
+    </article>
+    <article class="service-card" data-tilt>
+      <div class="icon">🌐</div>
+      <h3>Web Development</h3>
+      <p>Responsive, fast, and SEO-friendly websites built with modern code standards.</p>
+    </article>
+  </div>
+</section>
+
+<!-- FEATURED WORK -->
+<section id="featured" class="reveal">
+  <div class="section-header">
+    <h2 class="section-title">Featured Projects</h2>
+    <a href="portfolio.html" class="view-all-link">View All Projects &rarr;</a>
+  </div>
+  
+  <div class="featured-grid">
+    <!-- Project 1 -->
+    <div class="featured-item">
+        <div class="featured-img-container">
+            <img src="assets/UI_UX Design/SellerSignUpPage.webp" alt="NextGen Dashboard" loading="lazy">
+        </div>
+        <div class="featured-content">
+            <span class="featured-badge">UI/UX Design</span>
+            <h3>NextGen Seller Landing Page</h3>
+            <p>A comprehensive Landing for e-commerce sellers featuring data visualization and intuitive navigation.</p>
+            <a href="portfolio.html" class="text-link">View Details</a>
+        </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="featured-item reverse">
+        <div class="featured-img-container">
+            <img src="assets/Web Design/nextgen.webp" alt="NovaTech Systems" loading="lazy">
+        </div>
+        <div class="featured-content">
+            <span class="featured-badge">Web Development</span>
+            <h3>NextGen Innovators Website</h3>
+            <p>A modern, responsive corporate website designed to establish trust and showcase technical solutions.</p>
+            <a href="https://nextgenin.netlify.app/" target="_blank" class="text-link">Live Demo</a>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial-section reveal">
+    <div class="testimonial-card">
+        <div class="quote-icon"><i class='bx bxs-quote-left'></i></div>
+        <p class="testimonial-text">
+            "Clifford consistently demonstrated dedication, leadership, and a genuine commitment to the success of their fellow learners. His ability to break down complex topics into relatable explanations made a significant difference."
+        </p>
+        <div class="testimonial-author">
+            <div class="author-info">
+                <h4>Mercy Kendi</h4>
+                <span>Program Manager, ALX Africa</span>
+            </div>
+            <a href="about.html" class="button sm-btn">View Letter</a>
+        </div>
+    </div>
+</section>
+
+<!-- VIDEO SECTION -->
 <section class="video-card reveal" style="margin: 64px auto 0 auto; max-width: 980px;">
   <div class="frame" style="aspect-ratio: 16/9; background: #181c22; display: flex; align-items: center; justify-content: center;">
     <video controls poster="assets/wtch this video.webp" style="width:100%; height:auto; border-radius:16px; background:#000;">
@@ -131,7 +254,7 @@
     <p>© <span id="year"></span> Cliff-De-Tech. All Rights Reserved.</p>
   </div>
 </footer>
-<script src="JS/main.js?v=1.0"></script>
+<script src="JS/main.js?v=1.1"></script>
 <script>
   const video = document.querySelector('video');
   video.addEventListener('ended', () => {
