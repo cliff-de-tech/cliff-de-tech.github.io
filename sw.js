@@ -6,7 +6,7 @@ const urlsToCache = [
   '/portfolio.html',
   '/skills.html',
   '/contact.html',
-  '/CSS/style.css?v=1.1',
+  '/CSS/style.css?v=1.2',
   '/CSS/web-category.css?v=1.1',
   '/JS/main.js?v=1.1',
   '/JS/web-category.js?v=1.1',

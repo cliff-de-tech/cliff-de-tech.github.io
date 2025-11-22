@@ -287,7 +287,83 @@ body.light-theme .theme-toggle {
   }
 }
 
-/* ====== HERO ====== */
+/* ====== HERO SECTION (REDESIGNED - IMAGE RIGHT) ====== */
+.custom-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Split screen: Text Left | Image Right */
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh; /* Full viewport height */
+  width: 100%;
+  max-width: 1280px; /* Limit max width for large screens */
+  margin: 0 auto;
+  padding: calc(var(--nav-h) + 2rem) clamp(1.5rem, 5vw, 3rem) 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Left Content (Text) - Default Order 1 */
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  order: 1; 
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(123, 220, 255, 0.1);
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 99px;
+  border: 1px solid rgba(123, 220, 255, 0.2);
+  align-self: flex-start;
+  margin-bottom: 0.5rem;
+}
+body.light-theme .hero-badge {
+  background: rgba(0, 123, 255, 0.08);
+  border-color: rgba(0, 123, 255, 0.2);
+  color: var(--accent);
+}
+
+.hero-intro {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  color: var(--text);
+  font-weight: 500;
+  margin: 0;
+}
+
+.hero-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(3rem, 6vw, 5rem); /* Responsive big text */
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--text);
+}
+
+.hero-title span {
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  color: var(--muted);
+  max-width: 500px;
+  line-height: 1.6;
+  margin: 0;
+}
+
 .hero-socials {
   display: flex;
   gap: 32px;
@@ -309,6 +385,7 @@ body.light-theme .theme-toggle {
   transition: background 0.2s, color 0.2s, transform 0.2s;
   text-decoration: none;
 }
+
 body.light-theme .hero-socials a {
   color: var(--accent);
   background: rgba(0,123,255,0.10);
@@ -324,71 +401,7 @@ body.light-theme .hero-socials a {
 body.light-theme .hero-socials a:hover {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
 }
-.custom-hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 90vh;
-  width: 100vw;
-  box-sizing: border-box;
-  padding: 64px 5vw 48px 5vw;
-  background: transparent;
-  position: relative;
-  z-index: 1;
-}
-.hero-left {
-  flex: 1;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-.hero-badge {
-  background: linear-gradient(90deg, rgba(123,220,255,0.25), rgba(155,123,255,0.25));
-  color: #ffffff;
-  font-weight: 600;
-  border-radius: 10px;
-  padding: 8px 22px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 4px 24px rgba(123,220,255,0.10);
-  border: 1px solid rgba(123,220,255,0.18);
-}
-body.light-theme .hero-badge {
-    color: var(--text);
-}
-.hero-intro {
-  font-size: 2rem;
-  color: #ffffff;
-  margin: 0;
-}
-body.light-theme .hero-intro {
-    color: var(--text);
-}
-.hero-title {
-  font-size: 4rem;
-  font-weight: 800;
-  line-height: 1.05;
-  background: linear-gradient(90deg, #7bdcff 10%, #9b7bff 90%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin: 0 0 24px 0;
-  font-family: 'Space Grotesk', 'Inter', Arial, sans-serif;
-}
-body.light-theme .hero-title {
-  background: linear-gradient(90deg, var(--accent) 10%, var(--accent-2) 90%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.hero-subtitle {
- font-size: 2rem;
-  color: #ffffff;
-  margin: 0;
-}
-body.light-theme .hero-subtitle {
-    color: var(--text);
-}
+
 .hero-cta {
   display: flex;
   gap: 24px;
@@ -432,102 +445,119 @@ body.light-theme .button:hover, body.light-theme .button.outline:hover {
     color: #fff;
     border-color: var(--accent-2);
 }
+
+/* Right Content (Image) - Default Order 2 */
 .hero-right {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  min-width: 340px;
-}
-.hero-image-bg {
-  background: linear-gradient(135deg, rgba(123,220,255,0.18) 0%, rgba(155,123,255,0.18) 100%);
-  border-radius: 48px;
-  padding: 32px;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 32px rgba(241, 241, 241, 0.1);
-  border: 1.5px solid rgba(123,220,255,0.18);
   position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  order: 2;
 }
-body.light-theme .hero-image-bg {
-    background: linear-gradient(135deg, rgba(0,123,255,0.1) 0%, rgba(88,59,255,0.1) 100%);
-    border: 1.5px solid rgba(0,0,0,0.1);
-}
-.hero-image {
-  width: 340px;
-  height: 420px;
-  object-fit: cover;
-  border-radius: 32px;
-  box-shadow: 0 8px 32px rgba(30,60,255,0.15);
-  z-index: 2;
+
+/* The Frame Container */
+.hero-image-container {
   position: relative;
-}
-.hero-dots {
-  position: absolute;
-  width: 12px;
-  height: 120px;
-  background: repeating-linear-gradient(
-    to bottom,
-    #7bdcff 0 8px,
-    transparent 8px 16px
-  );
-  border-radius: 8px;
+  width: 100%;
+  max-width: 450px; /* Control max image size */
+  aspect-ratio: 4 / 5; /* Portrait ratio like the video */
+  border-radius: 24px;
   z-index: 1;
 }
 
-@keyframes moveUpDownLeft {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+/* The Image Itself */
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  border: 4px solid var(--bg); 
+  outline: 2px solid var(--accent);
+  outline-offset: 4px; /* Creates space between image and outline */
+  background: var(--glass); /* Placeholder color */
 }
 
-@keyframes moveUpDownRight {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(20px); }
+/* Decorative Elements (Shapes behind image) */
+.hero-shape-1 {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 120px;
+  height: 120px;
+  background: var(--accent);
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(40px);
+  opacity: 0.6;
 }
 
-.hero-dots-left {
-  left: -28px;
-  top: 40px;
-  animation: moveUpDownLeft 3s ease-in-out infinite;
-}
-.hero-dots-right {
-  right: -28px;
-  top: 40px;
-  background: repeating-linear-gradient(
-    to bottom,
-    #1e3cff 0 8px,
-    transparent 8px 16px
-  );
-  animation: moveUpDownRight 3s ease-in-out infinite;
-}
-body.light-theme .hero-dots-right {
-     background: repeating-linear-gradient( to bottom, var(--accent-2) 0 8px, transparent 8px 16px );
+.hero-shape-2 {
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 180px;
+  height: 180px;
+  background: var(--accent-2);
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(50px);
+  opacity: 0.5;
 }
 
+.hero-dots-grid {
+  position: absolute;
+  bottom: 30px;
+  right: -40px;
+  width: 80px;
+  height: 80px;
+  background-image: radial-gradient(var(--muted) 1px, transparent 1px);
+  background-size: 10px 10px;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+/* Responsive Styles */
 @media (max-width: 900px) {
   .custom-hero {
-    flex-direction: column;
-    gap: 48px;
-    padding: 32px 2vw;
-  }
-  .hero-right, .hero-left {
-    max-width: 100%;
-    align-items: center;
+    grid-template-columns: 1fr; /* Stack vertically on tablet/mobile */
     text-align: center;
+    gap: 3rem;
+    padding-top: calc(var(--nav-h) + 1rem);
   }
-  .hero-title {
-    font-size: 2.5rem;
+
+  .hero-left {
+    order: 2; /* Text goes BELOW image on mobile */
+    align-items: center;
   }
+
+  .hero-right {
+    order: 1; /* Image goes ABOVE text on mobile */
+  }
+
+  .hero-badge {
+    align-self: center;
+  }
+
+  .hero-subtitle {
+    margin: 0 auto;
+  }
+
+  .hero-cta {
+    justify-content: center;
+  }
+
+  .hero-image-container {
+    max-width: 320px; /* Smaller image on mobile */
+  }
+  
+  /* Adjust outlines for mobile */
   .hero-image {
-    width: 220px;
-    height: 280px;
+    outline-offset: 3px;
+    border-width: 3px;
   }
-  .hero-image-bg {
-    border-radius: 32px;
-    padding: 16px;
+  .hero-dots-grid {
+    right: -20px;
   }
 }
 
