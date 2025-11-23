@@ -4,7 +4,7 @@ This repository contains the complete source code for my personal portfolio webs
 
 **View the live site:** [**https://cliff-de-tech.github.io/**](https://cliff-de-tech.github.io/)
 
-![Screenshot of the portfolio homepage]()
+![Screenshot of the portfolio homepage](https://github.com/cliff-de-tech/cliff-de-tech.github.io/blob/main/assets/homepage-screenshot.png)
 
 ---
 
